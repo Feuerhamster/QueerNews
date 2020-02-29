@@ -1,0 +1,25 @@
+{
+  "name": "queernews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "better-rss": "^1.0.0",
+    "ws": "^7.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Feuerhamster/QueerNews.git"
+  },
+  "author": "Feuerhamster",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Feuerhamster/QueerNews/issues"
+  },
+  "homepage": "https://github.com/Feuerhamster/QueerNews#readme"
+}
