@@ -1,10 +1,17 @@
+// import modules
+const fs = require('fs');
+
+// create static class
 class Config{
 
-	configPath = './config.json';
-	config = {
+	static configPath = './config.json';
+	static config = {
 		dbna: {
 			username: '',
 			password: ''
+		},
+		discord: {
+			webhooks: []
 		},
 		rss: {
 			feeds: [],
@@ -12,24 +19,12 @@ class Config{
 		}
 	};
 
-	constructor() {
-
-		// load modules
-		this._fs = require('fs');
-
-		// execute functions
-		this.initConfig();
-
-		console.log('[Config] Loaded');
-
-	}
-
-	initConfig(){
+	static initConfig(){
 
 		// create config with default schema if not exists
-		if(!this._fs.existsSync(this.configPath)){
+		if(!fs.existsSync(Config.configPath)){
 
-			this._fs.writeFileSync(this.configPath, JSON.stringify(this.config, null, 4));
+			fs.writeFileSync(Config.configPath, JSON.stringify(Config.config, null, 4));
 
 			console.warn('--- [ Config ] ---\n' +
 				'No config file found. A new one has been created. Please fill in data and restart the application!');
@@ -39,14 +34,13 @@ class Config{
 		}
 
 		// get the config
-		let config = this._fs.readFileSync(this.configPath);
-		config = JSON.parse(config);
+		let config = fs.readFileSync(Config.configPath).toString();
+		Config.config = JSON.parse(config);
 
-		this.config = config;
+		console.log('[Config] Loaded');
 
 	}
 }
 
-
-
+// export static class
 module.exports = Config;

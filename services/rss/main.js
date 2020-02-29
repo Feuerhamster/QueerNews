@@ -1,30 +1,16 @@
-class RSS {
+// import modules
+const BetterRSS = require('better-rss');
+const Config = require('../config/main');
 
-	constructor() {
+// create static class
+class RSS{
 
-		this._config = require('../../main.js').Config;
+	static RSS = null;
 
-		const BetterRSS = require('better-rss');
-		this._rss = new BetterRSS(this._config.config.rss);
-
-		this.init();
-
-	}
-
-	init(){
-
-		this._rss.on('updating', () => {
-			console.log("[RSS] updating...")
-		});
-
-	}
-
-	on(event, callback){
-
-		this._rss.on(event, callback);
-
+	static initRSS(){
+		RSS.RSS = new BetterRSS(Config.config.rss);
 	}
 
 }
-
+// export static class
 module.exports = RSS;
