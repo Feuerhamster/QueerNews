@@ -22,7 +22,7 @@ class DiscordWebhook{
 				headers: {
 					'content-type': 'application/json'
 				},
-				data: JSON.stringify({ content: `@everyone **${item.title}** von **${feed.title}**\n${item.link}` })
+				data: JSON.stringify({ content: item.link })
 			})
 				.then(res => {})
 				.catch(err => console.error(err.code));

@@ -16,6 +16,9 @@ class Config{
 		rss: {
 			feeds: [],
 			updateInterval: 120000
+		},
+		web: {
+			port: 3000
 		}
 	};
 
