@@ -5,34 +5,42 @@ const RSS = require('../rss/main');
 
 router.get('/feeds', (req, res) => {
 
-	let feeds = RSS.RSS.feeds().get(false);
+	let feeds = Object.values(RSS.RSS.feeds().getAll());
 
-	let titles = [];
+	let titles = Array.from(feeds, el => el.feed.title);
 
-	for (let i = 0; i < feeds.length; i++) {
-		RSS.RSS.fetchFeed(feeds[i]).then((feed) => {
-
-			titles.push(/([a-z0-9.]+) ?/gi.exec(feed.title)[1]);
-
-			if(i === feeds.length-1){
-				res.send(titles);
-			}
-
-		});
-	}
+	res.send(titles);
 
 });
 
 router.get('/feeds/:id', (req, res) => {
 
-	RSS.RSS.fetchFeed(parseInt(req.params.id))
-		.then((feed) => {
-			res.send(feed);
+	let feed = RSS.RSS.feeds().get(parseInt(req.params.id));
+
+	if(feed){
+		res.send(feed);
+	}else{
+		res.status(404).send({ error: 'feed_not_found' });
+	}
+
+});
+
+router.get('/overview', (req, res) => {
+
+	let feeds = Object.values(RSS.RSS.feeds().getAll());
+
+	let newFeeds = [];
+
+	feeds.forEach((feed) => {
+		newFeeds.push({
+			title: feed.feed.title,
+			description: feed.feed.description,
+			link: feed.feed.link,
+			items: feed.items.slice(0, 5)
 		})
-		.catch((err) => {
-			console.error(err);
-			res.status(500).send(err);
-		});
+	});
+
+	res.send(newFeeds);
 
 });
 

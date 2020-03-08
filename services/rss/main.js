@@ -25,7 +25,7 @@ class RSS{
 		});
 
 		RSS.RSS.on('newItem', (item, feed) => {
-			console.log(`[RSS] new item "${item.title}" from ${feed.title}`);
+			console.log(`[RSS] new item "${item.title}" from ${feed.feed.title}`);
 		});
 
 		console.log('[RSS] Loaded');

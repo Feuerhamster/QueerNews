@@ -8,14 +8,16 @@ class Config{
 	static config = {
 		dbna: {
 			username: '',
-			password: ''
+			password: '',
+			group: ''
 		},
 		discord: {
 			webhooks: []
 		},
 		rss: {
 			feeds: [],
-			updateInterval: 120000
+			updateInterval: 120000,
+			extraImages: true
 		},
 		web: {
 			port: 3000

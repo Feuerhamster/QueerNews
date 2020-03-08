@@ -8,9 +8,11 @@ class Web{
 	static app = express();
 	static port = process.env.PORT || Config.config.web.port;
 	static apiRoute = require('./api');
+	static cors = require('cors');
 
 	static loadRoutes(){
 
+		Web.app.use(Web.cors());
 		Web.app.use('/api', Web.apiRoute);
 		Web.app.use(express.static('./services/web/app'));
 

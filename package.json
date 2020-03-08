@@ -4,10 +4,12 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
-    "axios": "^0.19.2",
-    "better-rss": "^1.0.1",
+    "axios": "latest",
+    "axios-cookiejar-support": "^0.5.1",
+    "better-rss": "^1.1.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "ws": "^7.2.1"
+    "ws": "^7.2.2"
   },
   "devDependencies": {},
   "scripts": {
