@@ -76,4 +76,19 @@ export default {
     padding: 0px 10px 10px 10px;
     font-size: 16px;
 }
+@media (prefers-color-scheme: dark) {
+    .feed-item{
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+}
+@media only screen and (max-width: 920px) {
+    .feed-item{
+        flex-direction: column;
+    }
+    .feed-item > .img{
+        width: 100%;
+        height: 200px;
+    }
+}
 </style>

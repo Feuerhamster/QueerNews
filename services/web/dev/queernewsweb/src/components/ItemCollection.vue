@@ -37,11 +37,15 @@ export default {
     margin-bottom: 50px;
     width: 100%;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 .item-collection > h1{
     margin: 0px;
     display: flex;
     cursor: pointer;
+}
+.item-collection > h1:hover{
+    text-decoration: underline;
 }
 .item-collection > p{
     margin: 0px 0px 10px 0px;
@@ -49,8 +53,6 @@ export default {
 }
 .item-collection-body{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 @media only screen and (max-width: 920px) {
     .item-collection{
@@ -61,6 +63,9 @@ export default {
     }
     .item-collection > h1, .item-collection > p{
         justify-content: center;
+    }
+    .item-collection-body{
+        flex-wrap: wrap;
     }
 }
 </style>

@@ -46,15 +46,14 @@ export default {
     justify-content: flex-start;
     align-items: center;
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);
-    width: 260px;
-    margin-top: 20px;
+    margin: 10px;
     cursor: pointer;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.5);
 }
 .item-box > div{
     display: inline-flex;
-    width: 260px;
+    width: 100%;
     height: 200px;
     background-position: center;
     background-size: cover;
@@ -79,6 +78,11 @@ export default {
 @media only screen and (max-width: 920px) {
     .item-box, .item-box > div{
         width: 100%;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    .item-box{
+       background-color: rgba(0, 0, 0, 0.4);
     }
 }
 </style>

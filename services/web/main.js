@@ -15,13 +15,14 @@ class Web{
 		Web.app.use(Web.cors());
 		Web.app.use('/api', Web.apiRoute);
 		Web.app.use(express.static('./services/web/app'));
+		Web.app.use('*', express.static('./services/web/app'));
 
 	}
 
 	static start(){
 
 		Web.app.listen(Web.port, () => {
-			console.log("[Web] server started on port: " + Web.port)
+			console.log("[Web] Server started on port: " + Web.port)
 		});
 
 	}

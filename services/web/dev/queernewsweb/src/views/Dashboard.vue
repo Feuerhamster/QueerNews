@@ -18,18 +18,22 @@
 
         </ItemCollection>
 
+        <Social></Social>
+
     </div>
 </template>
 
 <script>
 import ItemCollection from "../components/ItemCollection";
 import ItemBox from "../components/ItemBox";
+import Social from "../components/Social";
 
 export default {
     name: 'Home',
     components: {
 		ItemCollection,
-		ItemBox
+		ItemBox,
+        Social
     },
     data(){
     	return {

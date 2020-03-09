@@ -1,7 +1,7 @@
 <template>
 
     <div class="feed-collection">
-        <h1 @click="open">{{ title }}</h1>
+        <h1>{{ title }}</h1>
         <span>Quelle: <a :href="url" target="_blank">{{ url }}</a></span>
         <p>{{ description }}</p>
         <div class="feed-collection-body" v-show="!hidden">
@@ -19,11 +19,6 @@ export default {
         return {
             hidden: false,
         }
-    },
-    methods: {
-    	open: function () {
-			window.open(this.url, '_blank');
-		}
     }
 }
 </script>
@@ -40,7 +35,9 @@ export default {
 .feed-collection > h1{
     margin: 0px;
     display: flex;
-    cursor: pointer;
+}
+.feed-collection{
+    display: inline-flex;
 }
 .feed-collection > p{
     margin: 0px 0px 10px 0px;

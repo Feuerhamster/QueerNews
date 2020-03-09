@@ -9,6 +9,7 @@ class DiscordWebhook{
 	static registerHandler(){
 
 		RSS.RSS.on('newItem', (item, feed) => DiscordWebhook.sendWebhooks(item, feed));
+		console.log('[Discord] Loaded');
 
 	}
 

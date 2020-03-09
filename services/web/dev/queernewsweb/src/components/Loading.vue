@@ -66,5 +66,10 @@ export default {
         transform: rotate(360deg);
     }
 }
+@media (prefers-color-scheme: dark) {
+    .loading-frame{
+        background-color: #1d2a3c;
+    }
+}
 
 </style>

@@ -37,11 +37,22 @@ body{
     width: 100%;
     background-color: #ECEFF1
 }
+a, a:visited{
+    color: #03A9F4;
+}
 *{
     box-sizing: border-box;
 }
 
 .responsive-content{
     padding: 5%;
+}
+@media (prefers-color-scheme: dark) {
+    #app{
+        color: #ECEFF1;
+    }
+    body{
+        background-color: #1d2a3c;
+    }
 }
 </style>

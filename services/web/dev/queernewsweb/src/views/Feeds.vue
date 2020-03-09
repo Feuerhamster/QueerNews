@@ -81,4 +81,9 @@ export default {
     flex-direction: row;
     width: 100%;
 }
+@media only screen and (max-width: 920px) {
+    .feeds{
+        flex-direction: column;
+    }
+}
 </style>

@@ -7,12 +7,19 @@ class Config{
 	static configPath = './config.json';
 	static config = {
 		dbna: {
+			enable: false,
 			username: '',
 			password: '',
 			group: ''
 		},
 		discord: {
+			enable: false,
 			webhooks: []
+		},
+		telegram: {
+			enable: false,
+			token: '',
+			chatId: ''
 		},
 		rss: {
 			feeds: [],
@@ -20,6 +27,7 @@ class Config{
 			extraImages: true
 		},
 		web: {
+			enable: false,
 			port: 3000
 		}
 	};
