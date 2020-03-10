@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.43032d585d81a008c91a1873edead5e6.js"
+  "/precache-manifest.51270debc43f9364e6003d2ae5af703c.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "queernewsweb"});

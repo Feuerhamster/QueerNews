@@ -54,6 +54,7 @@ export default {
     margin: 5px;
     border-radius: 4px;
     /*box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);*/
+    user-select: none;
 }
 #navbar > .spacer{
     display: flex;
@@ -67,6 +68,7 @@ export default {
     align-items: center;
     padding: 0px 10px 0px 10px;
     text-shadow: 1px 1px rgba(0,0,0,0.2);
+    user-select: none;
 }
 #navbar a {
     color: white;

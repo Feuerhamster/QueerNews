@@ -20,7 +20,13 @@
                 dbna: ""
             }
         },
-        watch: {
+        created() {
+			if(this.$store.state.config.social && this.$store.state.config.social.telegram && this.$store.state.config.social.dbna){
+				this.setTelegram();
+				this.setDBNA();
+            }
+		},
+		watch: {
 		    '$store.state.config.social.telegram': 'setTelegram',
 		    '$store.state.config.social.dbna': 'setDBNA'
         },

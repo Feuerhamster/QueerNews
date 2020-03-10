@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="home responsive-content">
 
         <ItemCollection
                 v-for="(feed, index) in overview"
@@ -63,11 +63,6 @@ export default {
     flex-direction: column;
     padding: 5%;
     align-items: center;
-}
-@media only screen and (max-width: 920px) {
-    .home{
-        margin-top: 10%;
-    }
 }
 
 @media only screen and (min-width: 1700px) {

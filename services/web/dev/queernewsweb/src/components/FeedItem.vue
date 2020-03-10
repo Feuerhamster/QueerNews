@@ -47,6 +47,11 @@ export default {
     min-height: 120px;
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);
     background-color: rgba(255, 255, 255, 0.5);
+    transition: transform ease-in-out 0.05s;
+}
+.feed-item:hover{
+    transform: scale(1.02);
+    transition: transform ease-in-out 0.05s;
 }
 .feed-item > .img{
     display: flex;

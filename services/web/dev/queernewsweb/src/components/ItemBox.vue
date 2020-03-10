@@ -50,6 +50,11 @@ export default {
     cursor: pointer;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.5);
+    transition: transform ease-in-out 0.05s;
+}
+.item-box:hover{
+    transform: scale(1.02);
+    transition: transform ease-in-out 0.05s;
 }
 .item-box > div{
     display: inline-flex;

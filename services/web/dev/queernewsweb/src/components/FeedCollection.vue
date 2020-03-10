@@ -39,6 +39,9 @@ export default {
 .feed-collection{
     display: inline-flex;
 }
+.feed-collection > span, .feed-collection a{
+    word-break: break-all;
+}
 .feed-collection > p{
     margin: 0px 0px 10px 0px;
     display: flex;
@@ -51,13 +54,7 @@ export default {
 }
 @media only screen and (max-width: 920px) {
     .feed-collection{
-        justify-content: center!important;
-    }
-    .feed-collection-body{
-        justify-content: center;
-    }
-    .feed-collection > h1, .feed-collection > p{
-        justify-content: center;
+        align-items: center!important;
     }
 }
 </style>

@@ -55,4 +55,9 @@ a, a:visited{
         background-color: #1d2a3c;
     }
 }
+@media only screen and (max-width: 920px) {
+    .responsive-content{
+        margin-top: 10%;
+    }
+}
 </style>

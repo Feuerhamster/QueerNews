@@ -56,13 +56,7 @@ export default {
 }
 @media only screen and (max-width: 920px) {
     .item-collection{
-        justify-content: center!important;
-    }
-    .item-collection-body{
-        justify-content: center;
-    }
-    .item-collection > h1, .item-collection > p{
-        justify-content: center;
+        align-items: center!important;
     }
     .item-collection-body{
         flex-wrap: wrap;

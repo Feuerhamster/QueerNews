@@ -37,7 +37,6 @@ export default {
         },
         select: function(){
 
-            console.log(this.selected);
             this.selectedItem = parseInt(this.selected);
 
         }
@@ -62,12 +61,21 @@ export default {
     font-weight: 500;
     padding: 5px 10px 5px 10px;
     border-radius: 4px;
+    transition: transform ease-in-out 0.05s;
 }
 .sidebar > ul > li:hover{
     background-color: rgba(0,0,0,0.05);
     cursor: pointer;
+    transform: scale(1.05);
+    transition: transform ease-in-out 0.05s;
 }
 .sidebar .active{
     background-color: rgba(0,0,0,0.07);
+}
+
+@media only screen and (max-width: 920px) {
+    .sidebar{
+        width: 100%;
+    }
 }
 </style>
