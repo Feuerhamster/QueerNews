@@ -1,6 +1,7 @@
 // import modules
 const Config = require('../config/main');
 const express = require('express');
+const fs = require('fs');
 
 // create static class
 class Web{
@@ -21,9 +22,22 @@ class Web{
 
 	static start(){
 
+		Web.initWebConfig();
+
 		Web.app.listen(Web.port, () => {
 			console.log("[Web] Server started on port: " + Web.port)
 		});
+
+	}
+
+	static initWebConfig(){
+
+		// create config with default schema if not exists
+		if(!fs.existsSync('./services/web/app/config.json') || fs.readFileSync(path).toString() === ''){
+
+			fs.writeFileSync('./services/web/app/config.json', JSON.stringify(Config.config.web.frontendConfig, null, 4));
+
+		}
 
 	}
 

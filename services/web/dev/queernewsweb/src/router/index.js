@@ -5,6 +5,7 @@ import Error from '../views/Error';
 import About from '../views/About';
 import Api from "../views/Api";
 import Feeds from "../views/Feeds";
+import Privacy from "../views/Privacy";
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,11 @@ const routes = [
 		path: '/docs',
 		name: 'docs',
 		component: Api
+	},
+	{
+		path: '/privacy',
+		name: 'privacy',
+		component: Privacy
 	},
 	{
 		path: '/error/:err',

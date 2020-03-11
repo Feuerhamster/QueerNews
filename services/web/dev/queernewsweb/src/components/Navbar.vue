@@ -8,7 +8,6 @@
             <router-link to="/" exact>Startseite</router-link>
             <router-link to="/feeds/">Feeds</router-link>
             <router-link to="/about">Über uns</router-link>
-            <router-link to="/contact">Kontakt</router-link>
             <router-link to="/docs">API</router-link>
             <router-link to="/privacy">Datenschutz</router-link>
         </div>

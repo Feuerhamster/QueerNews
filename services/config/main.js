@@ -28,14 +28,21 @@ class Config{
 		},
 		web: {
 			enable: false,
-			port: 3000
+			port: 3000,
+			frontendConfig: {
+				endpoint: 'http://localhost:3000/api/',
+				social: {
+					telegram: 'https://t.me/QueerNewsChannel',
+					dbna: 'https://www.dbna.com/profile/glPhJ_qAvn'
+				}
+			}
 		}
 	};
 
 	static initConfig(){
 
 		// create config with default schema if not exists
-		if(!fs.existsSync(Config.configPath)){
+		if(!fs.existsSync(Config.configPath) || fs.readFileSync(Config.configPath).toString() === ''){
 
 			fs.writeFileSync(Config.configPath, JSON.stringify(Config.config, null, 4));
 
