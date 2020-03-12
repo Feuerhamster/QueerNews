@@ -44,6 +44,11 @@ router.get('/overview', (req, res) => {
 
 });
 
+router.get('/rss', (req, res) => {
+	let rss = RSS.generateRSS();
+	res.header('content-type', 'application/xml');
+	res.send(rss);
+});
 
 // export router
 module.exports = router;

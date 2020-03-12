@@ -2,6 +2,16 @@
 
     <div id="api" class="responsive-content">
 
+        <h1>QueerNews RSS Feed</h1>
+
+        <h1 class="api-heading">
+            <span class="green">GET</span> /api/rss
+        </h1>
+        <p>
+            Unser hauseigener RSS Feed mit den aktuellsten News aus allen Quellen. <br/>
+            Bitte nutzt diesen Feed <strong>nicht</strong> um in kurzen Zeitabständen auf Updates zu überprüfen. <br/>Für Benachrichtigungen bei neuen Artikeln gibt es unsere WebSocket API.
+        </p>
+
         <h1>QueerNews API Dokumentation</h1>
 
         <p>Endpunkt für alle APIs: <strong>{{ endpoint }}</strong></p>
@@ -38,11 +48,6 @@ export default {
     	return {
     		endpoint: ""
         }
-    },
-    computed: {
-    	getEndpoint: function(){
-            return this.$store.state.config.endpoint
-        }
     }
 }
 </script>
@@ -53,10 +58,13 @@ export default {
     flex-direction: column;
 }
 
-#api h1, #api p{
-    display: inline-flex;
+#api h1{
+    display: flex;
 }
-
+#api p{
+    display: block;
+    text-align: left;
+}
 .api-heading{
     font-weight: 500;
     font-family: Consolas, monospace;

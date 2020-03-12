@@ -32,6 +32,57 @@ class RSS{
 
 	}
 
+	static generateRSS(){
+
+		let feeds = Object.values(RSS.RSS.feeds().getAll());
+
+		let items = [];
+
+		for(let feed of feeds){
+
+			feed.items.slice(0,4).forEach(item => {
+				items.push({
+					title: {_text: item.title },
+					link: {_text: item.link },
+					description: {_text: item.description },
+					author: {_text: item.author ? item.author : feed.feed.title },
+					pubDate: {_text: item.pubDate },
+					guid: {_text: item.guid },
+					source: {_text: feed.feed.link },
+					'media:thumbnail' : {
+						_attributes: {
+							url: item.thumbnail
+						}
+					}
+				});
+			});
+
+		}
+
+
+		let feed = {
+			_declaration: {
+				_attributes: { version: "1.0", encoding: "utf-8"}
+			},
+			rss: {
+				_attributes: {version: "2.0"},
+				channel: {
+					title: {_text: "QueerNews"},
+					description: {_text: "Aktuelles über LGBT+ Themen"},
+					url: {_text: "https://queernews.ml/api/rss"},
+					link: {_text: "https://queernews.ml"},
+					item: items
+				}
+			}
+
+		};
+
+
+
+		return RSS.RSS._xml.js2xml(feed, {compact: true, spaces: 4});
+
+	}
+
 }
 // export static class
 module.exports = RSS;

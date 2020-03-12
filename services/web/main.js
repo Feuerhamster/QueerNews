@@ -33,7 +33,7 @@ class Web{
 	static initWebConfig(){
 
 		// create config with default schema if not exists
-		if(!fs.existsSync('./services/web/app/config.json') || fs.readFileSync(path).toString() === ''){
+		if(!fs.existsSync('./services/web/app/config.json') || fs.readFileSync('./services/web/app/config.json').toString() === ''){
 
 			fs.writeFileSync('./services/web/app/config.json', JSON.stringify(Config.config.web.frontendConfig, null, 4));
 
