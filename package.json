@@ -9,7 +9,7 @@
     "better-rss": "^1.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "ws": "^7.2.2"
+    "express-ws": "^4.0.0"
   },
   "devDependencies": {},
   "scripts": {

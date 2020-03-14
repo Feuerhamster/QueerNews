@@ -50,5 +50,39 @@ router.get('/rss', (req, res) => {
 	res.send(rss);
 });
 
+router.get('/analytics/:source', (req, res) => {
+
+	let Web = require('./main');
+
+	if(req.params.source && Web.tracker[req.params.source]){
+
+		let data = Web.tracker[req.params.source].data;
+
+		let sliced = Object.entries(data).slice(0, 30);
+
+		data = {};
+
+		sliced.forEach((el) => { data[el[0]] = el[1] });
+
+		res.send(data);
+
+
+	}else{
+		res.status(404).send({ error: 'source_not_found' })
+	}
+
+});
+
+router.ws('/', (ws, req) => {
+
+	ws.send(JSON.stringify({ type: 'connect', status: 'success', service: 'QueerNews WebSocket API' }));
+
+	ws.on('message', (msg) => {
+		ws.send(JSON.stringify({ type: 'error', error: 'send_not_allowed' }));
+		ws.close();
+	});
+
+});
+
 // export router
 module.exports = router;
