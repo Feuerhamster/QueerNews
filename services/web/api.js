@@ -50,26 +50,27 @@ router.get('/rss', (req, res) => {
 	res.send(rss);
 });
 
-router.get('/analytics/:source', (req, res) => {
+router.get('/analytics/', (req, res) => {
 
 	let Web = require('./main');
 
-	if(req.params.source && Web.tracker[req.params.source]){
+	let webData = Object.values(Web.tracker.webapp.data);
+	let apiData = Object.values(Web.tracker.api.data);
 
-		let data = Web.tracker[req.params.source].data;
+	let data = {
+		web: {
+			total: webData.reduce((a, b) => a + b),
+			average: parseFloat((webData.reduce((a, b) => a + b) / webData.length).toFixed(2)),
+			today: webData[webData.length-1]
+		},
+		api: {
+			total: apiData.reduce((a, b) => a + b),
+			average: parseFloat((apiData.reduce((a, b) => a + b) / apiData.length).toFixed(2)),
+			today: apiData[apiData.length-1]
+		}
+	};
 
-		let sliced = Object.entries(data).slice(0, 30);
-
-		data = {};
-
-		sliced.forEach((el) => { data[el[0]] = el[1] });
-
-		res.send(data);
-
-
-	}else{
-		res.status(404).send({ error: 'source_not_found' })
-	}
+	res.send(data);
 
 });
 
