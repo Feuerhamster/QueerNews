@@ -4,14 +4,19 @@
         <div>
             <h1>{{ title }}</h1>
             <p>{{ formattedDescription }}</p>
+            <span>{{ date }}</span>
         </div>
     </div>
 </template>
 
 <script>
+import * as Timeago from 'timeago.js';
+import DE from 'timeago.js/lib/lang/de';
+Timeago.register('de', DE);
+
 export default {
     name: "FeedItem",
-    props: ["title", "img", "description", "link"],
+    props: ["title", "img", "description", "link", "pubDate"],
     computed: {
         formattedDescription: function(){
             if(this.description){
@@ -27,7 +32,14 @@ export default {
                 return "";
             }
 
-        }
+        },
+		date: function(){
+			if(this.pubDate){
+				return Timeago.format(new Date(this.pubDate), 'de');
+			}else{
+				return '';
+			}
+		}
     },
     methods: {
         open: function(){
@@ -74,18 +86,31 @@ export default {
     font-weight: 500;
     font-size: 22px;
     padding: 10px;
+    word-break: break-word;
 }
 .feed-item p{
     margin: 0px;
     text-align: left;
     padding: 0px 10px 10px 10px;
     font-size: 16px;
+    word-break: break-word;
+}
+.feed-item span{
+    color: rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    margin-top: auto;
+    padding: 0px 10px 10px 10px;
 }
 @media (prefers-color-scheme: dark) {
     .feed-item{
         background-color: rgba(0, 0, 0, 0.4);
     }
-
+    .feed-item > div{
+        opacity: 0.9;
+    }
+    .feed-item span {
+        color: rgba(255, 255, 255, 0.4);
+    }
 }
 @media only screen and (max-width: 920px) {
     .feed-item{
@@ -94,6 +119,9 @@ export default {
     .feed-item > .img{
         width: 100%;
         height: 200px;
+    }
+    .feed-item > div{
+        align-items: center;
     }
 }
 </style>

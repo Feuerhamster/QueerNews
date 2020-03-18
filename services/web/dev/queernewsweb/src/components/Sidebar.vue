@@ -53,7 +53,7 @@ export default {
 }
 .sidebar > ul{
     list-style: none;
-    margin: 0px;
+    margin: 0px 0px 20px 0px;
     padding: 0px;
 }
 .sidebar > ul > li{
@@ -64,18 +64,24 @@ export default {
     transition: transform ease-in-out 0.05s;
 }
 .sidebar > ul > li:hover{
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(0, 0, 2, 0.1);
     cursor: pointer;
     transform: scale(1.05);
     transition: transform ease-in-out 0.05s;
 }
 .sidebar .active{
-    background-color: rgba(0,0,0,0.07);
+    background-color: rgba(0, 0, 2, 0.1);
 }
 
 @media only screen and (max-width: 920px) {
     .sidebar{
         width: 100%;
+    }
+}
+@media only screen and (min-width: 921px){
+    .sidebar{
+        position: sticky;
+        top: 65px;
     }
 }
 </style>

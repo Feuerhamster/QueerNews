@@ -8,7 +8,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		loading: true,
-		config: {}
+		config: {
+			endpoint: null,
+			social: {
+				telegram: null,
+				dbna: null,
+				discord: null
+			}
+		}
 	},
 	mutations: {
 
@@ -83,6 +90,18 @@ export default new Vuex.Store({
 			try{
 
 				return await Axios.get(context.state.config.endpoint + 'feeds/' + index);
+
+			}catch (e) {
+				await Router.push({name: 'error', params: {err: 'connection'}});
+			}
+
+		},
+
+		async fetchAnalytics(context, type){
+
+			try{
+
+				return await Axios.get(context.state.config.endpoint + 'analytics/' + type);
 
 			}catch (e) {
 				await Router.push({name: 'error', params: {err: 'connection'}});

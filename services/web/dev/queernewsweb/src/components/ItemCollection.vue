@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import favicon from 'get-website-favicon';
 export default {
     name: "ItemCollection",
     props: ["title", "description", "id"],

@@ -1,7 +1,7 @@
 <template>
 
     <div id="navbar">
-        <img src="@/assets/icon.svg"/>
+        <img src="@/assets/icon.svg" alt="logo"/>
         <h1>QueerNews</h1>
         <span class="spacer"></span>
         <div class="nav-buttons" v-show="nav" @click="toggleNav">

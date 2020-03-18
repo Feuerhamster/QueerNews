@@ -27,7 +27,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #1d2a3c;
     width: 100%;
 }
 body{
@@ -37,8 +37,11 @@ body{
     width: 100%;
     background-color: #ECEFF1
 }
-a, a:visited{
+a{
     color: #03A9F4;
+}
+a:visited{
+    color: #838eff;
 }
 *{
     box-sizing: border-box;
@@ -46,6 +49,7 @@ a, a:visited{
 
 .responsive-content{
     padding: 5%;
+    align-items: flex-start;
 }
 @media (prefers-color-scheme: dark) {
     #app{

@@ -6,14 +6,19 @@
         </div>
         <h1>{{ title }}</h1>
         <p>{{ formattedDescription }}</p>
+        <span>{{ date }}</span>
     </div>
 
 </template>
 
 <script>
+import * as Timeago from 'timeago.js';
+import DE from 'timeago.js/lib/lang/de';
+Timeago.register('de', DE);
+
 export default {
     name: "ItemBox",
-    props: ["title", "img", "description", "link"],
+    props: ["title", "img", "description", "link", "pubDate"],
     computed: {
     	formattedDescription: function(){
     		if(this.description){
@@ -29,6 +34,13 @@ export default {
     			return "";
             }
 
+        },
+        date: function(){
+            if(this.pubDate){
+                return Timeago.format(new Date(this.pubDate), 'de');
+            }else{
+            	return '';
+            }
         }
     },
     methods: {
@@ -53,7 +65,7 @@ export default {
     transition: transform ease-in-out 0.05s;
 }
 .item-box:hover{
-    transform: scale(1.02);
+    transform: scale(1.03);
     transition: transform ease-in-out 0.05s;
 }
 .item-box > div{
@@ -71,6 +83,7 @@ export default {
     font-weight: 500;
     font-size: 20px;
     padding: 10px;
+    word-break: break-all;
 }
 .item-box > p{
     margin: 0px;
@@ -78,6 +91,12 @@ export default {
     width: 100%;
     padding: 0px 10px 10px 10px;
     font-size: 14px;
+}
+.item-box > span{
+    color: rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    margin-top: auto;
+    padding: 5px;
 }
 
 @media only screen and (max-width: 920px) {
@@ -88,6 +107,12 @@ export default {
 @media (prefers-color-scheme: dark) {
     .item-box{
        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .item-box > div{
+        opacity: 0.9;
+    }
+    .item-box > span {
+        color: rgba(255, 255, 255, 0.4);
     }
 }
 </style>

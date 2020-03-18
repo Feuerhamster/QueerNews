@@ -5,7 +5,13 @@
         <Sidebar title="Feeds" :items="feeds" @select="selectFeed" :selected="$route.params.id" style="margin-right: 50px;"></Sidebar>
 
         <FeedCollection :title="currentFeed.feed.title" :description="currentFeed.feed.description" :url="currentFeed.feed.link">
-            <feed-item v-for="item in currentFeed.items" :title="item.title" :img="item.thumbnail" :description="item.description" :link="item.link"></feed-item>
+            <feed-item v-for="item in currentFeed.items"
+                       :title="item.title"
+                       :img="item.thumbnail"
+                       :description="item.description"
+                       :link="item.link"
+                       :pubDate="item.pubDate"
+            ></feed-item>
         </FeedCollection>
 
     </div>
@@ -64,8 +70,10 @@ export default {
 
 		},
         selectFeed: function(item){
-			this.$router.replace({ name: 'Feed', params: { id: item } });
-			this.fetchFeed(item);
+			if(this.$route.params.id !== item){
+				this.$router.replace({ name: 'Feed', params: { id: item } });
+				this.fetchFeed(item);
+            }
         },
         fetchFeed: function(id){
 			this.$store.dispatch('fetchFeed', id).then(data => { this.currentFeed = data.data; });

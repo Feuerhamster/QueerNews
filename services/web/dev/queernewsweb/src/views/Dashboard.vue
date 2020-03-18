@@ -14,6 +14,7 @@
                     :img="item.thumbnail"
                     :description="item.description"
                     :link="item.link"
+                    :pubDate="item.pubDate"
                     ></item-box>
 
         </ItemCollection>
