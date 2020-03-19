@@ -15,15 +15,19 @@ class DiscordWebhook{
 
 	static sendWebhooks(item, feed){
 
-		for(let url of Config.config.discord.webhooks){
+		for(let hook of Config.config.discord.webhooks){
+
+			let mention = hook.mention ? hook.mention : "";
+
+			if(!hook.url) return;
 
 			axios({
-				url: url,
+				url: hook.url,
 				method: 'post',
 				headers: {
 					'content-type': 'application/json'
 				},
-				data: JSON.stringify({ content: `@everyone **${item.title}** von **${feed.feed.title}**\n${item.link}` })
+				data: JSON.stringify({ content: `${mention} **${item.title}** von **${feed.feed.title.split(' ')[0]}**\n${item.link}` })
 			})
 				.then(res => {})
 				.catch(err => console.error(err.code));

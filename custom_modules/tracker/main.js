@@ -12,6 +12,8 @@ class Tracker {
 		//init json file to store data
 		if(fs.existsSync(this.path)){
 			this.data = JSON.parse(fs.readFileSync(this.path).toString());
+		}else{
+			fs.mkdirSync(__dirname + `\\data`);
 		}
 
 	}
