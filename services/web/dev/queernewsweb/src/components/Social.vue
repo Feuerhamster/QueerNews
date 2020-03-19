@@ -2,16 +2,16 @@
 
     <div class="social-links">
         <h4>Folge uns im Internet</h4>
-        <a title="Telegram Channel" :href="$store.state.config.social.telegram" target="_blank">
+        <a title="Telegram Channel" :href="$store.state.config.social.telegram" target="_blank" rel="noopener">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2000px-Telegram_logo.svg.png" alt="Telegram" />
         </a>
-        <a title="DBNA Gruppe" :href="$store.state.config.social.dbna" target="_blank">
+        <a title="DBNA Gruppe" :href="$store.state.config.social.dbna" target="_blank" rel="noopener">
             <img src="https://www.dbna.com/favicon.ico" alt="DBNA" />
         </a>
-        <a title="RSS Feed" :href="$store.state.config.endpoint + 'rss/'" target="_blank">
+        <a title="RSS Feed" :href="$store.state.config.endpoint + 'rss/'" target="_blank" rel="noopener">
             <img src="@/assets/rss_icon.png" alt="RSS"/>
         </a>
-        <a title="Discord Server" :href="$store.state.config.social.discord" target="_blank">
+        <a title="Discord Server" :href="$store.state.config.social.discord" target="_blank" rel="noopener">
             <img src="@/assets/discord.png" alt="Discord" />
         </a>
     </div>

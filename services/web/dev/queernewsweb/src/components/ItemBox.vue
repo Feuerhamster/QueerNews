@@ -83,7 +83,7 @@ export default {
     font-weight: 500;
     font-size: 20px;
     padding: 10px;
-    word-break: break-all;
+    word-break: break-word;
 }
 .item-box > p{
     margin: 0px;

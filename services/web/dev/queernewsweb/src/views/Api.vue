@@ -9,7 +9,7 @@
         </h1>
         <p>
             Unser hauseigener RSS Feed mit den aktuellsten News aus allen Quellen. <br/>
-            Bitte nutzt diesen Feed <strong>nicht</strong> um in kurzen Zeitabständen auf Updates zu überprüfen. <br/>Für Benachrichtigungen bei neuen Artikeln gibt es unsere WebSocket API.
+            Bitte nutzt diesen Feed <strong>nicht</strong>, um in kurzen Zeitabständen auf Updates zu überprüfen. <br/>Für Benachrichtigungen bei neuen Artikeln gibt es unsere WebSocket API.
         </p>
 
         <h1>QueerNews REST API Dokumentation</h1>
