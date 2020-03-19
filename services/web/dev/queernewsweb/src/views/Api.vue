@@ -216,9 +216,9 @@ export default {
 	mounted: function() {
 		let elements = this.$el.querySelectorAll("pre");
         for(let pre of elements){
-            pre.innerHTML = pre.innerHTML.replace(/"\w+"/g, m => "<span style='color: orange'>" + m + "</span>");
-            pre.innerHTML = pre.innerHTML.replace(/>: ([a-z| ]+)/g, ">: <span style='color: #aa83ff'>$1</span>");
-            pre.innerHTML = pre.innerHTML.replace(/\[(\w+)\]/g, "[<span style='color: lightgreen'>$1</span>]");
+            pre.innerHTML = pre.innerHTML.replace(/"\w+"/g, m => "<span style='color: #e69100'>" + m + "</span>");
+            pre.innerHTML = pre.innerHTML.replace(/>: ([a-z| ]+)/g, ">: <span style='color: #9274e6'>$1</span>");
+            pre.innerHTML = pre.innerHTML.replace(/\[(\w+)\]/g, "[<span style='color: #62c362'>$1</span>]");
         }
 	},
     computed: {
@@ -267,9 +267,14 @@ export default {
 }
 code, pre{
     padding: 4px 8px 4px 8px;
-    background-color: rgba(250,250,250,0.1);
+    background-color: rgba(255,255,255,0.7);
     border-radius: 4px;
     display: inline-block;
     text-shadow: none;
+}
+@media (prefers-color-scheme: dark) {
+    code, pre{
+        background-color: rgba(250,250,250,0.1);
+    }
 }
 </style>

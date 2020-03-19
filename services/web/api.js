@@ -3,6 +3,10 @@ const express = require('express');
 const router = express.Router();
 const RSS = require('../rss/main');
 
+router.get('/', (req, res) => {
+	res.send({ api: 'QueerNews', homepage: 'https://queernews.ml' });
+});
+
 router.get('/feeds', (req, res) => {
 
 	let feeds = Object.values(RSS.RSS.feeds().getAll());

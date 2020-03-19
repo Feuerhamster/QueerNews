@@ -65,7 +65,7 @@ class RSS{
 				_attributes: { version: "1.0", encoding: "utf-8"}
 			},
 			rss: {
-				_attributes: {version: "2.0"},
+				_attributes: {version: "2.0", 'xmlns:media': "http://search.yahoo.com/mrss/"},
 				channel: {
 					title: {_text: "QueerNews"},
 					description: {_text: "Aktuelles über LGBT+ Themen"},
