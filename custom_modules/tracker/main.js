@@ -13,7 +13,9 @@ class Tracker {
 		if(fs.existsSync(this.path)){
 			this.data = JSON.parse(fs.readFileSync(this.path).toString());
 		}else{
-			fs.mkdirSync(__dirname + `\\data`);
+			if(!fs.existsSync(__dirname + `\\data`)){
+				fs.mkdirSync(__dirname + `\\data`);
+			}
 		}
 
 	}
