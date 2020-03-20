@@ -7,14 +7,14 @@ class Tracker {
 
 	constructor(id) {
 
-		this.path = __dirname + `\\data\\${id}.json`;
+		this.path = __dirname + `/data/${id}.json`;
 
 		//init json file to store data
 		if(fs.existsSync(this.path)){
 			this.data = JSON.parse(fs.readFileSync(this.path).toString());
 		}else{
-			if(!fs.existsSync(__dirname + `\\data`)){
-				fs.mkdirSync(__dirname + `\\data`);
+			if(!fs.existsSync(__dirname + `/data`)){
+				fs.mkdirSync(__dirname + `/data`);
 			}
 		}
 
