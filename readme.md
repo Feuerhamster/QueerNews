@@ -7,7 +7,7 @@
 2. Frontend Build
     1. Go into /services/web/dev/queernewsweb and run `npm install`
     2. Run `npm run build` in /services/web/dev/queernewsweb
-    3. Copy the content of /services/web/dev/queernewsweb/dist/ directory to /services/web/dev/queernewsweb/app
+    3. Copy the content of /services/web/dev/queernewsweb/dist/ directory to /services/web/app/
 3. Configuration and start
     1. Go in the root directory and run `npm start`
     2. On first start, the program will be automatically quit with an error message. 
