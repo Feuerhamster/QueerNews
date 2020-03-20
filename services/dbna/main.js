@@ -14,6 +14,7 @@ class DBNA{
 			.then(data => console.log('[DBNA] Successful logged in'))
 			.catch(err => console.error(err));
 
+		DBNA.registerHandler();
 
 		console.log('[DBNA] Loaded');
 	}

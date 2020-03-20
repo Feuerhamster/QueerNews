@@ -33,7 +33,8 @@ class Config{
 				endpoint: 'http://localhost:3000/api/',
 				social: {
 					telegram: 'https://t.me/QueerNewsChannel',
-					dbna: 'https://www.dbna.com/profile/glPhJ_qAvn'
+					dbna: 'https://www.dbna.com/profile/glPhJ_qAvn',
+					discord: 'https://discordapp.com/invite/9xCV2Km'
 				}
 			}
 		}

@@ -79,7 +79,7 @@
                 <p>
                     Bei dem gesamten QueerNews Projekt handelt es sich um ein nicht-kommerzielles Hobbyprojekt.<br/>
                     Wir verdienen keinerlei Geld durch diese Webseite oder unsere Services.<br/>
-                    Da redaktionelle Inhalte anderer Quellen einbinden und nutzen, sind die Inhalte auf kurze Texte (max. 100 Zeichen) begrenzt.<br/>
+                    Da wir redaktionelle Inhalte anderer Quellen einbinden und nutzen, sind die Inhalte auf kurze Texte (max. 100 Zeichen) begrenzt.<br/>
                     Außerdem sind die Originalnamen sowie eine Verlinkung zur Quelle angegeben.
                 </p>
             </div>
