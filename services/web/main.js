@@ -24,33 +24,23 @@ class Web{
 	static loadRoutes(){
 
 		//tracker
-		let parsedHost= url.parse(Config.config.web.frontendConfig.endpoint);
-
+		//this tracks requests to api
 		Web.app.use('/api/*', (req, res, next) => {
 
-			if(req.headers.host){
-
-				if(parsedHost.host !== req.headers.host){
-					Web.tracker.api.count(1);
-				}
-
-			}else{
+			if(req.method === 'GET' && (!req.headers['qs-from'] || req.headers['qs-from'] !== 'queernews')){
 				Web.tracker.api.count(1);
 			}
-
 			next();
+
 		});
+		//this tracks requests to webapp
 		Web.app.use('/config.json', (req, res, next) => {
 
-			if(req.headers.host){
-
-				if(parsedHost.host === req.headers.host){
-					Web.tracker.webapp.count(1);
-				}
-
+			if(req.headers['qs-from'] && req.headers['qs-from'] === 'queernews'){
+				Web.tracker.webapp.count(1);
 			}
-
 			next();
+
 		});
 
 		Web.app.use(Web.cors());

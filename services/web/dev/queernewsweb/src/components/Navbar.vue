@@ -1,8 +1,10 @@
 <template>
 
     <div id="navbar">
-        <img src="@/assets/icon.svg" alt="logo"/>
-        <h1>QueerNews</h1>
+        <a href="/" class="brand">
+            <img src="@/assets/icon.svg" alt="logo"/>
+            <h1>QueerNews</h1>
+        </a>
         <span class="spacer"></span>
         <div class="nav-buttons" v-show="nav" @click="toggleNav">
             <router-link to="/" exact>Startseite</router-link>
@@ -48,7 +50,11 @@ export default {
     position: fixed;
     z-index: 2000;
 }
-#navbar > img{
+.brand{
+    display: inline-flex;
+    text-decoration: none!important;
+}
+#navbar > .brand > img{
     max-height: 40px;
     margin: 5px;
     border-radius: 4px;
@@ -59,7 +65,7 @@ export default {
     display: flex;
     flex-grow: 1;
 }
-#navbar > h1{
+#navbar > .brand >  h1{
     display: flex;
     margin: 0px;
     color: white;
@@ -68,6 +74,7 @@ export default {
     padding: 0px 10px 0px 10px;
     text-shadow: 1px 1px rgba(0,0,0,0.2);
     user-select: none;
+    font-size: 32px;
 }
 #navbar a {
     color: white;

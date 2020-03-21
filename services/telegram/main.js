@@ -28,7 +28,7 @@ class Telegram{
 			},
 			data: JSON.stringify({
 				chat_id: Config.config.telegram.chatId,
-				text: `*${item.title}* von *${feed.feed.title.split(' ')[0]}*\n\n${item.link}`,
+				text: `*${item.title}* von *${feed.feed.title.split('-')[0]}*\n\n${item.link}`,
 				parse_mode: 'Markdown'
 			})
 		})

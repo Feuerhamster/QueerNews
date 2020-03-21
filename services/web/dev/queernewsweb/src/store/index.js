@@ -42,7 +42,7 @@ export default new Vuex.Store({
 
 			try{
 
-				let result = await Axios.get('/config.json');
+				let result = await Axios.get('/config.json', { headers: { 'qs-from': 'queernews' } });
 				context.commit('SET_CONFIG', result.data);
 
 			}catch (e) {
@@ -59,7 +59,7 @@ export default new Vuex.Store({
 
 			try{
 
-				return await Axios.get(context.state.config.endpoint + 'overview');
+				return await Axios.get(context.state.config.endpoint + 'overview', { headers: { 'qs-from': 'queernews' } });
 
 			}catch (e) {
 				await Router.push({name: 'error', params: {err: 'connection'}});
@@ -75,7 +75,7 @@ export default new Vuex.Store({
 
 			try{
 
-				return await Axios.get(context.state.config.endpoint + 'feeds');
+				return await Axios.get(context.state.config.endpoint + 'feeds', { headers: { 'qs-from': 'queernews' } });
 
 			}catch (e) {
 				await Router.push({name: 'error', params: {err: 'connection'}});
@@ -89,7 +89,7 @@ export default new Vuex.Store({
 
 			try{
 
-				return await Axios.get(context.state.config.endpoint + 'feeds/' + index);
+				return await Axios.get(context.state.config.endpoint + 'feeds/' + index, { headers: { 'qs-from': 'queernews' } });
 
 			}catch (e) {
 				await Router.push({name: 'error', params: {err: 'connection'}});
@@ -101,7 +101,7 @@ export default new Vuex.Store({
 
 			try{
 
-				return await Axios.get(context.state.config.endpoint + 'analytics/' + type);
+				return await Axios.get(context.state.config.endpoint + 'analytics/' + type, { headers: { 'qs-from': 'queernews' } });
 
 			}catch (e) {
 				await Router.push({name: 'error', params: {err: 'connection'}});
