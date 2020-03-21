@@ -61,4 +61,10 @@ export default {
         flex-wrap: wrap;
     }
 }
+
+@media only screen and (min-width: 921px) and (max-width: 1300px) {
+    .item-collection-body{
+        flex-wrap: wrap;
+    }
+}
 </style>

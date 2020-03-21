@@ -28,12 +28,12 @@ class Telegram{
 			},
 			data: JSON.stringify({
 				chat_id: Config.config.telegram.chatId,
-				text: `*${item.title}* von *${feed.feed.title.split('-')[0]}*\n\n${item.link}`,
-				parse_mode: 'Markdown'
+				text: `<b>${item.title}</b>\n<i>von <a href="${feed.feed.link}">${feed.feed.title.split('-')[0].trim()}</a></i>\n\n${item.link}`,
+				parse_mode: 'HTML'
 			})
 		})
 			.then(res => {})
-			.catch(err => console.error(err));
+			.catch(err => console.error('[Telegram]', err.response.data ? err.response.data : err));
 
 	}
 

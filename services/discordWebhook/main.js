@@ -27,10 +27,10 @@ class DiscordWebhook{
 				headers: {
 					'content-type': 'application/json'
 				},
-				data: JSON.stringify({ content: `${mention} **${item.title}** von **${feed.feed.title.split('-')[0]}**\n${item.link}` })
+				data: JSON.stringify({ content: `${mention} **${item.title}** von **${feed.feed.title.split('-')[0].trim()}**\n${item.link}` })
 			})
 				.then(res => {})
-				.catch(err => console.error(err.code));
+				.catch(err => console.error('[Discord]', err.response.data ? err.response.data : err));
 
 		}
 

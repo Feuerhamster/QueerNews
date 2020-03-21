@@ -11,16 +11,11 @@ class RSS{
 
 		RSS.RSS = new BetterRSS(Config.config.rss);
 
-		// add listeners
-		RSS.RSS.on('updating', ()=>{
-			console.log('[RSS] updating...');
-		});
-
 		RSS.RSS.on('error', (err)=>{
 			if(err.code){
 				console.error('[RSS] ' + err.code + ' (' + err.address + ')');
 			}else{
-				console.error(err);
+				console.error('[RSS]', err);
 			}
 		});
 
@@ -29,6 +24,13 @@ class RSS{
 		});
 
 		console.log('[RSS] Loaded');
+
+		if(RSS.RSS._updater){
+			console.log(`[RSS] Updater running. Interval: ${RSS.RSS.updateInterval / 1000} seconds`);
+		}else{
+			console.warn('[RSS] Warning: Updater not running!');
+		}
+
 
 	}
 

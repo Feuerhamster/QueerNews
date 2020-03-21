@@ -56,7 +56,7 @@ a:visited{
         color: #ECEFF1;
     }
     body{
-        background-color: #1d2a3c;
+        background-color: #1b2635;
     }
 }
 @media only screen and (max-width: 920px) {

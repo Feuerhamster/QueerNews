@@ -63,6 +63,9 @@ export default {
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.5);
     transition: transform ease-in-out 0.05s;
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 210px;
 }
 .item-box:hover{
     transform: scale(1.03);
@@ -102,6 +105,9 @@ export default {
 @media only screen and (max-width: 920px) {
     .item-box, .item-box > div{
         width: 100%;
+    }
+    .item-box{
+        flex-basis: 100%;
     }
 }
 @media (prefers-color-scheme: dark) {

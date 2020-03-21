@@ -30,3 +30,20 @@ In *main.js* the services will be required and executed by calling one of the st
             Here is the `better-rss` npm package used to get the feeds and updates.
 - **telegram** | Send news updates to telegram bot api
 - **web** | Handles the web page and our api. Its based on `express.js` and `Vue.js` for the frontend WebApp.
+
+## Feedproxy
+Some feeds has issues with the xml charset or has simply a title that is unsuitable for the QueerNews application.
+For that cases, we have a proxy for rss feeds.
+
+##### **GET** https://hamsterlabs.de/feedproxy.php
+##### URL Params:
+`url` | *required* | The url of your rss feed
+
+`method` | *required* | One of these two methods:
+ - **charset** | Change the charset of the xml to UTF-8
+ - **changeTitle** | Change the title of a feed
+ 
+`value` | Only required on **changeTitle**
+
+##### Response:
+The XML of your RSS Feed

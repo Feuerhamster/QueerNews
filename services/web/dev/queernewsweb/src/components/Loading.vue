@@ -68,7 +68,7 @@ export default {
 }
 @media (prefers-color-scheme: dark) {
     .loading-frame{
-        background-color: #1d2a3c;
+        background-color: #1b2635;
     }
 }
 

@@ -27,7 +27,14 @@ class DBNA{
 
 	static postNews(item, feed){
 
-		DBNA.API.pulse(Config.config.dbna.group).post(`**${item.title}** von **${feed.feed.title.split('-')[0]}**\n${item.link}`, Config.config.dbna.group)
+		//stop function if item is a "Gewinnspiel"
+		if(item.categories.includes('Gewinnspiel') || item.title.includes('Gewinnspiel')){
+			return;
+		}
+
+		let template = `> **${item.title}**\n\n*von ${feed.feed.title.split('-')[0].trim()}*\n${item.link}`;
+
+		DBNA.API.pulse(Config.config.dbna.group).post(template, Config.config.dbna.group)
 			.catch(err => {
 
 				//check if the error says, that the user needs to log in
@@ -41,7 +48,7 @@ class DBNA{
 
 							console.log("[DBNA] Successful re-login. Post message...");
 
-							DBNA.API.pulse(Config.config.dbna.group).post(`**${item.title}** von **${feed.feed.title.split('-')[0]}**\n${item.link}`, Config.config.dbna.group)
+							DBNA.API.pulse(Config.config.dbna.group).post(template, Config.config.dbna.group)
 								.catch(err => console.error(err.data ? err.data : err));
 
 						})
