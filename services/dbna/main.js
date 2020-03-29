@@ -27,8 +27,9 @@ class DBNA{
 
 	static postNews(item, feed){
 
-		//stop function if item is a "Gewinnspiel"
-		if(item.categories.includes('Gewinnspiel') || item.title.includes('Gewinnspiel')){
+		//stop function contains an excluded category
+		let exclude = Config.config.dbna.excludeCategories.join('|');
+		if(item.categories.find((el) => el.match(exclude))){
 			return;
 		}
 

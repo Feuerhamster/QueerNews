@@ -10,7 +10,8 @@ class Config{
 			enable: false,
 			username: '',
 			password: '',
-			group: ''
+			group: '',
+			excludeCategories: []
 		},
 		discord: {
 			enable: false,

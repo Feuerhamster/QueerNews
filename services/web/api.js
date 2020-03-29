@@ -17,7 +17,7 @@ router.get('/feeds', (req, res) => {
 
 });
 
-router.get('/feeds/:id', (req, res) => {
+router.get('/feeds/:id', [], (req, res) => {
 
 	let feed = RSS.RSS.feeds().get(parseInt(req.params.id));
 
@@ -42,6 +42,13 @@ router.get('/overview', (req, res) => {
 			link: feed.feed.link,
 			items: feed.items.slice(0, 5)
 		})
+	});
+
+	//sort overview by date of first item
+	newFeeds.sort((a, b) => {
+		a = new Date(a.items[0].pubDate);
+		b = new Date(b.items[0].pubDate);
+		return a > b ? -1 : a < b ? 1 : 0;
 	});
 
 	res.send(newFeeds);

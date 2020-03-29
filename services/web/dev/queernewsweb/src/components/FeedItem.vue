@@ -123,5 +123,8 @@ export default {
     .feed-item > div{
         align-items: center;
     }
+    .feed-item p, .feed-item h1{
+        text-align: center;
+    }
 }
 </style>
