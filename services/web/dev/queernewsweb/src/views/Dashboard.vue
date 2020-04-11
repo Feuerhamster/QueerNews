@@ -2,10 +2,10 @@
     <div class="home responsive-content">
 
         <ItemCollection
-                v-for="(feed, index) in overview"
+                v-for="feed in overview"
                 :title="feed.title"
                 :description="feed.description"
-                :id="index"
+                :id="feed._id"
         >
 
             <item-box

@@ -25,7 +25,9 @@ class Config{
 		rss: {
 			feeds: [],
 			updateInterval: 120000,
-			extraImages: true
+			extraImages: true,
+			cacheImages: true,
+			globalExcludeCategories: []
 		},
 		web: {
 			enable: false,

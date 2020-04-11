@@ -35,13 +35,17 @@ router.get('/overview', (req, res) => {
 
 	let newFeeds = [];
 
+	let counter = 0;
+
 	feeds.forEach((feed) => {
 		newFeeds.push({
+			_id: counter,
 			title: feed.feed.title,
 			description: feed.feed.description,
 			link: feed.feed.link,
 			items: feed.items.slice(0, 5)
-		})
+		});
+		counter++;
 	});
 
 	//sort overview by date of first item
@@ -61,30 +65,6 @@ router.get('/rss', (req, res) => {
 	res.send(rss);
 });
 
-router.get('/analytics/', (req, res) => {
-
-	let Web = require('./main');
-
-	let webData = Object.values(Web.tracker.webapp.data);
-	let apiData = Object.values(Web.tracker.api.data);
-
-	let data = {
-		web: {
-			total: webData.reduce((a, b) => a + b),
-			average: parseFloat((webData.reduce((a, b) => a + b) / webData.length).toFixed(2)),
-			today: webData[webData.length-1]
-		},
-		api: {
-			total: apiData.reduce((a, b) => a + b),
-			average: parseFloat((apiData.reduce((a, b) => a + b) / apiData.length).toFixed(2)),
-			today: apiData[apiData.length-1]
-		}
-	};
-
-	res.send(data);
-
-});
-
 router.ws('/', (ws, req) => {
 
 	ws.send(JSON.stringify({ type: 'connect', status: 'success', service: 'QueerNews WebSocket API' }));
@@ -94,6 +74,10 @@ router.ws('/', (ws, req) => {
 		ws.close();
 	});
 
+});
+
+router.get('/*', (req, res) => {
+	res.status(404).end();
 });
 
 // export router

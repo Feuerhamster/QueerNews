@@ -4,8 +4,6 @@ const express = require('express');
 const fs = require('fs');
 const ws = require('express-ws');
 const RSS = require('../rss/main');
-const TrackerModule = require('../../custom_modules/tracker/main');
-const url = require('url');
 
 // create static class
 class Web{
@@ -16,32 +14,8 @@ class Web{
 	static apiRoute = require('./api');
 	static cors = require('cors');
 
-	static tracker = {
-		api: new TrackerModule('api'),
-		webapp: new TrackerModule('webapp')
-	};
 
 	static loadRoutes(){
-
-		//tracker
-		//this tracks requests to api
-		Web.app.use('/api/*', (req, res, next) => {
-
-			if(req.method === 'GET' && (!req.headers['qs-from'] || req.headers['qs-from'] !== 'queernews')){
-				Web.tracker.api.count(1);
-			}
-			next();
-
-		});
-		//this tracks requests to webapp
-		Web.app.use('/config.json', (req, res, next) => {
-
-			if(req.headers['qs-from'] && req.headers['qs-from'] === 'queernews'){
-				Web.tracker.webapp.count(1);
-			}
-			next();
-
-		});
 
 		Web.app.use(Web.cors());
 		Web.app.use('/api', Web.apiRoute);

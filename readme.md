@@ -47,3 +47,42 @@ For that cases, we have a proxy for rss feeds.
 
 ##### Response:
 The XML of your RSS Feed
+
+## Dependencies
+One of the core modules of the QueerNews backend is the better-rss library, which was developed especially for this project.
+https://github.com/Feuerhamster/better-rss
+
+#### Custom modules
+- dbna (https://github.com/Feuerhamster/DBNA-API-v2)
+- tracker (currently not used)
+
+#### Other Dependencies:
+##### Backend:
+- axios
+- axios-cookiejar-support
+- better-rss
+- cors
+- express
+- express-ws
+- tough-cookie
+
+##### Frontend:
+- axios
+- register-service-worker
+- timeago.js
+- vue
+- vue-router
+- vuex
+
+## Current platforms
+QueerNews is present on various platforms on the Internet, whose profiles are operated by the services.
+- DBNA Group (https://www.dbna.com/profile/glPhJ_qAvn)
+- Discord Server \[#queer-news] (https://discordapp.com/invite/9xCV2Km)
+- Telegram Channel (https://t.me/QueerNewsChannel)
+
+## Members and project management
+The development of QueerNews is organized via a Trello board: https://trello.com/b/cxE9ER5A/queernews
+
+The project is maintained by two people:
+- [Feuerhamster](https://github.com/Feuerhamster/) | Main developer
+- [Bluemedia](https://github.com/BluemediaGER) | Hosting & Deployment

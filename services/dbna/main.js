@@ -28,7 +28,7 @@ class DBNA{
 	static postNews(item, feed){
 
 		//stop function contains an excluded category
-		let exclude = Config.config.dbna.excludeCategories.join('|');
+		let exclude = Config.config.rss.globalExcludeCategories.concat(Config.config.dbna.excludeCategories).join('|');
 		if(item.categories.find((el) => el.match(exclude))){
 			return;
 		}

@@ -108,33 +108,6 @@ Array[feed][
 </pre>
         </p>
 
-        <h1 class="api-heading">
-            <span class="green">GET</span> /api/analytics/
-        </h1>
-        <p>
-            <strong>Beschreibung:</strong><br/>
-            Stellt Statistiken über die QueerNews Webseite und die API bereit.
-        </p>
-
-        <p>
-            <strong>Rückgabeschema:</strong><br/>
-<pre>
-{
-    "web": {
-        "total": number,
-        "average": number,
-        "today": number
-    },
-    "api": {
-        "total": number,
-        "average": number,
-        "today": number
-    }
-}
-</pre>
-        </p>
-
-
 
         <h1>QueerNews Websocket API</h1>
 

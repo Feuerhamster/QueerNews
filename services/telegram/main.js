@@ -19,6 +19,11 @@ class Telegram{
 
 	static sendArticle(item, feed){
 
+		//stop function contains an excluded category
+		let exclude = Config.config.rss.globalExcludeCategories.join('|');
+		if(item.categories.find((el) => el.match(exclude))){
+			return;
+		}
 
 		axios({
 			url: Telegram.endpoint + 'sendMessage',

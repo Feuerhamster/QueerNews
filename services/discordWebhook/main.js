@@ -15,6 +15,12 @@ class DiscordWebhook{
 
 	static sendWebhooks(item, feed){
 
+		//stop function contains an excluded category
+		let exclude = Config.config.rss.globalExcludeCategories.join('|');
+		if(item.categories.find((el) => el.match(exclude))){
+			return;
+		}
+
 		for(let hook of Config.config.discord.webhooks){
 
 			let mention = hook.mention ? hook.mention : "";
