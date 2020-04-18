@@ -22,7 +22,7 @@
                     </div>
                     <div class="about-card">
                         <a :href="$store.state.config.social.dbna">
-                            <img src="https://scontent-frt3-2.xx.fbcdn.net/v/t1.0-9/p960x960/35362296_10156510970524559_7208143342570307584_o.jpg?_nc_cat=107&_nc_sid=110474&_nc_ohc=CojSvPQ5JHcAX_Pi2Gn&_nc_ht=scontent-frt3-2.xx&_nc_tp=6&oh=803d94d9faaa1c132d57c45dab7d3437&oe=5E994EEA" alt="DBNA" />
+                            <img src="https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/35362296_10156510970524559_7208143342570307584_o.jpg?_nc_cat=107&_nc_sid=110474&_nc_ohc=Nmq-j5fhao8AX9bB_ag&_nc_ht=scontent-frt3-1.xx&oh=cd4623b7ddc8a1244d82010c56e736ac&oe=5EBF7891" alt="DBNA" />
                             <h2>DBNA Gruppe</h2>
                         </a>
                     </div>
