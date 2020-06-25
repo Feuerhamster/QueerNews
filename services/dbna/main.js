@@ -26,7 +26,7 @@ class DBNA{
 
 		// Start schedule Job for post analyzer
 		if(Config.config.dbna.analytics.analyzePosts){
-			schedule.rescheduleJob(Config.config.filter.schedule, () => DBNA.analyzeLastPosts());
+			schedule.scheduleJob(Config.config.filter.schedule, () => DBNA.analyzeLastPosts());
 		}
 
 		console.log('[DBNA] Loaded');
