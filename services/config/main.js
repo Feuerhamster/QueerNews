@@ -4,14 +4,18 @@ const fs = require('fs');
 // create static class
 class Config{
 
-	static configPath = './config.json';
+	static configPath = './data/config.json';
 	static config = {
 		dbna: {
 			enable: false,
 			username: '',
 			password: '',
 			group: '',
-			excludeCategories: []
+			excludeCategories: [],
+			analytics: {
+				analyzePosts: true,
+				commentLearnGap: 0
+			}
 		},
 		discord: {
 			enable: false,
@@ -22,12 +26,29 @@ class Config{
 			token: '',
 			chatId: ''
 		},
+		twitter: {
+			enable: false,
+			consumerKey: '',
+			consumerSecret: '',
+			accessTokenKey: '',
+			accessTokenSecret: ''
+		},
+		filter: {
+			enable: false,
+			doExcludeCategoriesFilter: true,
+			globalExcludeCategories: [],
+			textFilter: {
+				doFilter: true,
+				doLearning: true,
+				filterGap: 0.8
+			},
+			schedule: { hour: 23, minute: 30 }
+		},
 		rss: {
 			feeds: [],
 			updateInterval: 120000,
 			extraImages: true,
-			cacheImages: true,
-			globalExcludeCategories: []
+			cacheImages: true
 		},
 		web: {
 			enable: false,
@@ -37,13 +58,22 @@ class Config{
 				social: {
 					telegram: 'https://t.me/QueerNewsChannel',
 					dbna: 'https://www.dbna.com/profile/glPhJ_qAvn',
-					discord: 'https://discordapp.com/invite/9xCV2Km'
+					discord: 'https://discordapp.com/invite/9xCV2Km',
+					twitter: 'https://twitter.com/QueerNewsDE'
 				}
 			}
 		}
 	};
 
+	/**
+	 * Read config file or create if not exist
+	 */
 	static initConfig(){
+
+		// Create data directory if not exist
+		if(!fs.existsSync('./data/')){
+			fs.mkdirSync('./data/');
+		}
 
 		// create config with default schema if not exists
 		if(!fs.existsSync(Config.configPath) || fs.readFileSync(Config.configPath).toString() === ''){

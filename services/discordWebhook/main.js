@@ -6,20 +6,23 @@ const axios = require('axios');
 // create static class
 class DiscordWebhook{
 
-	static registerHandler(){
+	/**
+	 * Init webhooks (register rss handler)
+	 */
+	static init(){
 
-		RSS.RSS.on('newItem', (item, feed) => DiscordWebhook.sendWebhooks(item, feed));
+		RSS.publishListener('discord', (item, feed) => DiscordWebhook.sendWebhooks(item, feed));
+
 		console.log('[Discord] Loaded');
 
 	}
 
+	/**
+	 * Send message to all webhooks
+	 * @param item
+	 * @param feed
+	 */
 	static sendWebhooks(item, feed){
-
-		//stop function contains an excluded category
-		let exclude = Config.config.rss.globalExcludeCategories.join('|');
-		if(item.categories.find((el) => el.match(exclude))){
-			return;
-		}
 
 		for(let hook of Config.config.discord.webhooks){
 

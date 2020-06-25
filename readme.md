@@ -12,8 +12,8 @@
     1. Go in the root directory and run `npm start`
     2. On first start, the program will be automatically quit with an error message. 
         This says, that no config file was found and a new one has been created. 
-        If you created a config.json in the root directory before (must be empty!), a template has been inserted.
-    3. Open /config.json and fill out all the generated fields
+        If you created a config.json in /data/ directory before (must be empty!), a template has been inserted.
+    3. Open /data/config.json and fill out all the generated fields
     4. run `npm start` again in root directory.
 
 ## Services
@@ -30,6 +30,8 @@ In *main.js* the services will be required and executed by calling one of the st
             Here is the `better-rss` npm package used to get the feeds and updates.
 - **telegram** | Send news updates to telegram bot api
 - **web** | Handles the web page and our api. Its based on `express.js` and `Vue.js` for the frontend WebApp.
+- **twitter** | Tweet news to the QueerNews twitter profile
+- **filter** | Machine learning filter for not relevant content 
 
 ## Feedproxy
 Some feeds has issues with the xml charset or has simply a title that is unsuitable for the QueerNews application.
@@ -52,7 +54,11 @@ The XML of your RSS Feed
 One of the core modules of the QueerNews backend is the better-rss library, which was developed especially for this project.
 https://github.com/Feuerhamster/better-rss
 
+Also for filtering the content that will be postet, we use a self developed machine learning library for text classification.
+https://github.com/Feuerhamster/TextClass
+
 #### Custom modules
+Custom modules are node modules, that are self developed but not published on npm right now.
 - dbna (https://github.com/Feuerhamster/DBNA-API-v2)
 - tracker (currently not used)
 
@@ -60,11 +66,14 @@ https://github.com/Feuerhamster/better-rss
 ##### Backend:
 - axios
 - axios-cookiejar-support
-- better-rss
+- better-rss (self developed)
 - cors
 - express
 - express-ws
 - tough-cookie
+- textclass (self developed)
+- node-schedule
+- twitter-lite
 
 ##### Frontend:
 - axios
@@ -77,8 +86,9 @@ https://github.com/Feuerhamster/better-rss
 ## Current platforms
 QueerNews is present on various platforms on the Internet, whose profiles are operated by the services.
 - DBNA Group (https://www.dbna.com/profile/glPhJ_qAvn)
-- Discord Server \[#queer-news] (https://discordapp.com/invite/9xCV2Km)
+- Discord Server \[#lobby] (https://discordapp.com/invite/AYfk43H)
 - Telegram Channel (https://t.me/QueerNewsChannel)
+- Twitter (https://twitter.com/QueerNewsDE)
 
 ## Members and project management
 The development of QueerNews is organized via a Trello board: https://trello.com/b/cxE9ER5A/queernews

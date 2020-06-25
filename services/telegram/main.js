@@ -8,22 +8,25 @@ class Telegram{
 
 	static endpoint = "";
 
-	static registerHandler(){
+	/**
+	 * Init telegram service and append rss listener
+	 */
+	static init(){
 
 		Telegram.endpoint = "https://api.telegram.org/bot" + Config.config.telegram.token + "/";
 
-		RSS.RSS.on('newItem', (item, feed) => Telegram.sendArticle(item, feed));
+		RSS.publishListener('telegram', (item, feed) => Telegram.sendArticle(item, feed));
+
 		console.log('[Telegram] Loaded');
 
 	}
 
+	/**
+	 * Send article to telegram channel
+	 * @param item
+	 * @param feed
+	 */
 	static sendArticle(item, feed){
-
-		//stop function contains an excluded category
-		let exclude = Config.config.rss.globalExcludeCategories.join('|');
-		if(item.categories.find((el) => el.match(exclude))){
-			return;
-		}
 
 		axios({
 			url: Telegram.endpoint + 'sendMessage',

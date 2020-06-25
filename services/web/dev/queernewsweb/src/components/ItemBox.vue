@@ -78,10 +78,10 @@ export default {
     background-position: center;
     background-size: cover;
     align-self: flex-start;
-    border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0 0;
 }
 .item-box > h1{
-    margin: 0px;
+    margin: 0;
     display: flex;
     font-weight: 500;
     font-size: 20px;
@@ -89,10 +89,10 @@ export default {
     word-break: break-word;
 }
 .item-box > p{
-    margin: 0px;
+    margin: 0;
     display: inline-flex;
     width: 100%;
-    padding: 0px 10px 10px 10px;
+    padding: 0 10px 10px 10px;
     font-size: 14px;
 }
 .item-box > span{
@@ -119,6 +119,10 @@ export default {
     }
     .item-box > span {
         color: rgba(255, 255, 255, 0.4);
+    }
+    .item-box > p{
+        text-align: center;
+        justify-content: center;
     }
 }
 </style>

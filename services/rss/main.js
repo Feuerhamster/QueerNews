@@ -7,10 +7,22 @@ class RSS{
 
 	static RSS = null;
 
+	/**
+	 * Start the better-rss module, add event listeners and handle some other things related to rss feeds
+	 */
 	static initRSS(){
 
-		RSS.RSS = new BetterRSS(Config.config.rss);
+		// Clone rss config
+		let adaptedConfig = Object.assign({}, Config.config.rss);
 
+		// Filter feed objects to raw feeds array from config
+		// This has to be done because config.rss.feeds is an array of objects and for better-rss we only want to have active feeds and only the url
+		adaptedConfig.feeds = adaptedConfig.feeds.filter((f) => f.active).map((f) => f.url);
+
+		// Create instance
+		RSS.RSS = new BetterRSS(adaptedConfig);
+
+		// Listen on error event
 		RSS.RSS.on('error', (err)=>{
 			if(err.code){
 				console.error('[RSS] ' + err.code + ' (' + err.address + ')');
@@ -19,6 +31,7 @@ class RSS{
 			}
 		});
 
+		// Log new item
 		RSS.RSS.on('newItem', (item, feed) => {
 			console.log(`[RSS] new item "${item.title}" from ${feed.feed.title}`);
 		});
@@ -34,9 +47,15 @@ class RSS{
 
 	}
 
+	/**
+	 * Generates a rss feed based on queernews sources
+	 * @returns {*}
+	 */
 	static generateRSS(){
 
 		let feeds = Object.values(RSS.RSS.feeds().getAll());
+
+		feeds = feeds.filter((f) => RSS.checkFeedScopes(f.feed._source, 'web'));
 
 		let items = [];
 
@@ -82,6 +101,37 @@ class RSS{
 
 
 		return RSS.RSS._xml.js2xml(feed, {compact: true, spaces: 4});
+
+	}
+
+	/**
+	 * Check if the source is enabled for the scope
+	 * @param source
+	 * @param scope
+	 * @returns {boolean}
+	 */
+	static checkFeedScopes(source, scope){
+
+		let feedConfig = Config.config.rss.feeds.find((f) => f.url === source);
+
+		return feedConfig.active && (feedConfig.scopes.includes(scope) || scope === '*');
+
+	}
+
+	/**
+	 * Add listener for the rss newItem event (including scope checks)
+	 * @param scope
+	 * @param func
+	 */
+	static publishListener(scope, func){
+
+		RSS.RSS.on('newItem', (item, feed) => {
+
+			if(RSS.checkFeedScopes(feed.feed._source, scope)){
+				func(item, feed);
+			}
+
+		});
 
 	}
 

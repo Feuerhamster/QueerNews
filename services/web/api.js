@@ -11,6 +11,8 @@ router.get('/feeds', (req, res) => {
 
 	let feeds = Object.values(RSS.RSS.feeds().getAll());
 
+	feeds = feeds.filter((f) => RSS.checkFeedScopes(f.feed._source, 'web'));
+
 	let titles = Array.from(feeds, el => el.feed.title);
 
 	res.send(titles);
@@ -21,7 +23,7 @@ router.get('/feeds/:id', [], (req, res) => {
 
 	let feed = RSS.RSS.feeds().get(parseInt(req.params.id));
 
-	if(feed){
+	if(feed && RSS.checkFeedScopes(feed.feed._source, 'web')){
 		res.send(feed);
 	}else{
 		res.status(404).send({ error: 'feed_not_found' });
@@ -38,6 +40,10 @@ router.get('/overview', (req, res) => {
 	let counter = 0;
 
 	feeds.forEach((feed) => {
+
+		// Check if feed should displayed or not
+		if(!RSS.checkFeedScopes(feed.feed._source, 'web')) return;
+
 		newFeeds.push({
 			_id: counter,
 			title: feed.feed.title,
@@ -45,7 +51,9 @@ router.get('/overview', (req, res) => {
 			link: feed.feed.link,
 			items: feed.items.slice(0, 5)
 		});
+
 		counter++;
+
 	});
 
 	//sort overview by date of first item
@@ -60,9 +68,12 @@ router.get('/overview', (req, res) => {
 });
 
 router.get('/rss', (req, res) => {
+
 	let rss = RSS.generateRSS();
+
 	res.header('content-type', 'application/xml');
 	res.send(rss);
+
 });
 
 router.ws('/', (ws, req) => {

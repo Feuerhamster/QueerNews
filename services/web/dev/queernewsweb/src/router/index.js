@@ -52,6 +52,12 @@ const routes = [
 		name: 'error',
 		component: Error,
 		props: true
+	},
+	{
+		path: '*',
+		name: 'notFound',
+		component: Error,
+		props: { err: 'notfound' }
 	}
 ];
 

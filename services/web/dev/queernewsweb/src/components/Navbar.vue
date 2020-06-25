@@ -2,7 +2,7 @@
 
     <div id="navbar">
         <a href="/" class="brand">
-            <img src="@/assets/icon.svg" alt="logo"/>
+            <img src="@/assets/queernews_paper.png" alt="logo"/>
             <h1>QueerNews</h1>
         </a>
         <span class="spacer"></span>
@@ -13,7 +13,9 @@
             <router-link to="/docs">API</router-link>
             <router-link to="/privacy">Datenschutz</router-link>
         </div>
-        <a @click="toggleNav" id="nav-menu-button">Menü</a>
+        <a @click="toggleNav" id="nav-menu-button">
+            <img src="@/assets/bar_menu.png" />
+        </a>
     </div>
 
 </template>
@@ -55,11 +57,15 @@ export default {
     text-decoration: none!important;
 }
 #navbar > .brand > img{
-    max-height: 40px;
-    margin: 5px;
+    max-height: 36px;
+    margin: 7px;
     border-radius: 4px;
-    /*box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);*/
+    box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.2);
     user-select: none;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
 }
 #navbar > .spacer{
     display: flex;
@@ -90,6 +96,18 @@ export default {
 #navbar a.router-link-active {
     font-weight: 600;
     text-decoration: underline;
+}
+#nav-menu-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#nav-menu-button > img{
+    max-height: 40px;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
 }
 
 @media only screen and (max-width: 920px) {

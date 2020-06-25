@@ -14,7 +14,9 @@ class Web{
 	static apiRoute = require('./api');
 	static cors = require('cors');
 
-
+	/**
+	 * Load routes for express app
+	 */
 	static loadRoutes(){
 
 		Web.app.use(Web.cors());
@@ -24,6 +26,9 @@ class Web{
 
 	}
 
+	/**
+	 * Start webserver and listeners
+	 */
 	static start(){
 
 		Web.initWebConfig();
@@ -32,10 +37,16 @@ class Web{
 			console.log("[Web] Server started on port: " + Web.port)
 		});
 
-		RSS.RSS.on('newItem', async (item, feed) => Web.sendWebsocket(item, feed));
+		RSS.publishListener('*', async (item, feed) => Web.sendWebsocket(item, feed));
 
 	}
 
+	/**
+	 * Send article to websocket api
+	 * @param item
+	 * @param feed
+	 * @returns {Promise<void>}
+	 */
 	static async sendWebsocket(item, feed) {
 
 		//loop over all
@@ -51,6 +62,9 @@ class Web{
 
 	}
 
+	/**
+	 * Config handling for frontend (vue.js app)
+	 */
 	static initWebConfig(){
 
 		// create config with default schema if not exists

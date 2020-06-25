@@ -6,7 +6,7 @@
             <option v-for="(item, index) in items" :value="index">{{ item.split('-')[0] }}</option>
         </select>
         <ul>
-            <li v-for="(item, index) in items" :class="{ active: selectedItem === index }" @click="clicked(index)">{{ item.split('-')[0] }}</li>
+            <li v-for="(item, index) in items" :class="{ active: selectedItem === index }" @click="clicked(index)">{{ item.split(/-|–/)[0] }}</li>
         </ul>
 
         <social></social>
@@ -53,12 +53,12 @@ export default {
     min-width: 260px;
 }
 .sidebar > h1{
-    margin-top: 0px;
+    margin-top: 0;
 }
 .sidebar > ul{
     list-style: none;
-    margin: 0px 0px 20px 0px;
-    padding: 0px;
+    margin: 0 0 20px 0;
+    padding: 0;
 }
 .sidebar > ul > li{
     font-size: 21px;

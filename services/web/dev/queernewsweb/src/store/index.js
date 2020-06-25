@@ -13,7 +13,8 @@ export default new Vuex.Store({
 			social: {
 				telegram: null,
 				dbna: null,
-				discord: null
+				discord: null,
+				twitter: null
 			}
 		}
 	},

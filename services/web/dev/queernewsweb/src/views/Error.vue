@@ -9,7 +9,8 @@
         data(){
 			return {
 				errors: {
-					connection: 'Es ist ein Verbindungsproblem aufgetreten'
+					connection: 'Es ist ein Verbindungsproblem aufgetreten',
+                    notfound: 'Diese Seite konnte nicht gefunden werden'
                 }
             }
         },

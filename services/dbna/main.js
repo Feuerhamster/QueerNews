@@ -2,33 +2,45 @@
 const RSS = require('../rss/main');
 const Config = require('../config/main');
 const dbnaAPI = require('../../custom_modules/dbna/main');
+const Filter = require('../filter/main');
+const schedule = require('node-schedule');
 
 // create static class
 class DBNA{
 
 	static API = new dbnaAPI();
 
-	static initDBNA(){
+	/**
+	 * Method to initialize the DBNA service
+	 * Do things like login, rss listener, analytics schedule, ...
+	 */
+	static init(){
 
+		// Log in to DBNA with credentials from config
 		DBNA.API.login(Config.config.dbna.username, Config.config.dbna.password, 1)
 			.then(data => console.log('[DBNA] Successful logged in'))
 			.catch(err => console.error(err.data ? err.data : err));
 
-		DBNA.registerHandler();
+		// Register handler for RSS
+		RSS.publishListener('dbna', (item, feed) => DBNA.postNews(item, feed));
+
+		// Start schedule Job for post analyzer
+		if(Config.config.dbna.analytics.analyzePosts){
+			schedule.rescheduleJob(Config.config.filter.schedule, () => DBNA.analyzeLastPosts());
+		}
 
 		console.log('[DBNA] Loaded');
 	}
 
-	static registerHandler(){
-
-		RSS.RSS.on('newItem', (item, feed) => DBNA.postNews(item, feed));
-
-	}
-
+	/**
+	 * Post on DBNA in group
+	 * @param item
+	 * @param feed
+	 */
 	static postNews(item, feed){
 
-		//stop function contains an excluded category
-		let exclude = Config.config.rss.globalExcludeCategories.concat(Config.config.dbna.excludeCategories).join('|');
+		//stop function contains an excluded category special for DBNA
+		let exclude = Config.config.dbna.excludeCategories.join('|');
 		if(item.categories.find((el) => el.match(exclude))){
 			return;
 		}
@@ -60,6 +72,43 @@ class DBNA{
 				}
 
 			});
+
+	}
+
+	/**
+	 * Analyze all current posts (without pagination) on DBNA for filtering
+	 * @returns {Promise<void>}
+	 */
+	static async analyzeLastPosts(){
+
+		let currentGroupPulse;
+
+		// Fetch current stories
+		try{
+			currentGroupPulse = await DBNA.API.pulse(Config.config.dbna.group).getCurrent();
+		}catch (e) {
+			console.error("[DBNA] ", e);
+			return;
+		}
+
+		// Loop over all stories
+		for(let story of currentGroupPulse.stories){
+
+			// Check if story is already processed
+			if(!story.hearts.has){
+				// If not, heart it to set it as processed
+				DBNA.API.story(story.id).heart();
+
+				// Skip if there are comments. Because this means, the content is relevant.
+				if(story.comments.count > Config.config.dbna.analytics.commentLearnGap) continue;
+
+				if(story.embed && story.embed.title){
+					Filter.train(story.embed.title);
+				}
+
+			}
+
+		}
 
 	}
 

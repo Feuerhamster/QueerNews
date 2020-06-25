@@ -5,24 +5,34 @@ const DiscordWebhook = require('./services/discordWebhook/main');
 const Web = require('./services/web/main');
 const DBNA = require('./services/dbna/main');
 const Telegram = require('./services/telegram/main');
+const Twitter = require('./services/twitter/main');
+const Filter = require('./services/filter/main');
 
 // execute functions
 Config.initConfig();
 RSS.initRSS();
 
 if(Config.config.discord.enable){
-	DiscordWebhook.registerHandler();
+	DiscordWebhook.init();
 }
 
 if(Config.config.dbna.enable){
-	DBNA.initDBNA();
+	DBNA.init();
 }
 
 if(Config.config.telegram.enable){
-	Telegram.registerHandler();
+	Telegram.init();
+}
+
+if(Config.config.twitter.enable){
+	Twitter.init();
 }
 
 if(Config.config.web.enable){
 	Web.loadRoutes();
 	Web.start();
+}
+
+if(Config.config.filter.enable){
+	Filter.init();
 }
