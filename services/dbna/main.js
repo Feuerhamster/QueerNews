@@ -26,6 +26,7 @@ class DBNA{
 
 		// Start schedule Job for post analyzer
 		if(Config.config.dbna.analytics.analyzePosts){
+			console.log('[DBNA] Started analyzer schedule');
 			schedule.scheduleJob(Config.config.filter.schedule, () => DBNA.analyzeLastPosts());
 		}
 
@@ -80,6 +81,8 @@ class DBNA{
 	 * @returns {Promise<void>}
 	 */
 	static async analyzeLastPosts(){
+
+		console.log('[DBNA] Analyze posts for filter training...');
 
 		let currentGroupPulse;
 

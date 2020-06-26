@@ -43,8 +43,9 @@ export default {
     word-break: break-all;
 }
 .feed-collection > p{
-    margin: 0px 0px 10px 0px;
+    margin: 0 0 10px 0;
     display: flex;
+    text-align: left;
 }
 .feed-collection-body{
     display: flex;
@@ -55,6 +56,9 @@ export default {
 @media only screen and (max-width: 920px) {
     .feed-collection{
         align-items: center!important;
+    }
+    .feed-collection > p{
+        text-align: center;
     }
 }
 </style>

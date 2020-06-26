@@ -33,7 +33,8 @@ class Twitter{
 
 		let titleHashtag = feed.feed.title.split('-')[0].trim()
 											.split(':')[0].trim()
-											.split(' ')[0].trim();
+											.split(' ')[0].trim()
+											.replace('.', '');
 
 		// Format text
 		let text = `${item.title} von ${feed.feed.title.split('-')[0].trim()}\n${item.link}\n#${titleHashtag} #queer #lgbt #news`;
