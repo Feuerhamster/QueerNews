@@ -80,38 +80,37 @@ class DBNA{
 	 * Analyze all current posts (without pagination) on DBNA for filtering
 	 * @returns {Promise<void>}
 	 */
-	static async analyzeLastPosts(){
+	static analyzeLastPosts(){
 
 		console.log('[DBNA] Analyze posts for filter training...');
 
-		let currentGroupPulse;
+		DBNA.API.pulse(Config.config.dbna.group).getCurrent()
+			.then((pulse) => {
 
-		// Fetch current stories
-		try{
-			currentGroupPulse = await DBNA.API.pulse(Config.config.dbna.group).getCurrent();
-		}catch (e) {
-			console.error("[DBNA] ", e);
-			return;
-		}
+				// Loop over all stories
+				for(let story of pulse.stories){
 
-		// Loop over all stories
-		for(let story of currentGroupPulse.stories){
+					// Check if story is already processed
+					if(!story.hearts.has){
+						// If not, heart it to set it as processed
+						DBNA.API.story(story.id).heart();
 
-			// Check if story is already processed
-			if(!story.hearts.has){
-				// If not, heart it to set it as processed
-				DBNA.API.story(story.id).heart();
+						// Skip if there are comments. Because this means, the content is relevant.
+						if(story.comments.count > Config.config.dbna.analytics.commentLearnGap) continue;
 
-				// Skip if there are comments. Because this means, the content is relevant.
-				if(story.comments.count > Config.config.dbna.analytics.commentLearnGap) continue;
+						if(story.embed && story.embed.title){
+							Filter.train(story.embed.title);
+						}
 
-				if(story.embed && story.embed.title){
-					Filter.train(story.embed.title);
+					}
+
 				}
 
-			}
 
-		}
+			})
+			.catch((e) => {
+				console.error("[DBNA] ", e);
+			})
 
 	}
 
