@@ -1,12 +1,12 @@
 // import services
-const Config = require('./services/config/main');
-const RSS = require('./services/rss/main');
-const DiscordWebhook = require('./services/discordWebhook/main');
-const Web = require('./services/web/main');
-const DBNA = require('./services/dbna/main');
-const Telegram = require('./services/telegram/main');
-const Twitter = require('./services/twitter/main');
-const Filter = require('./services/filter/main');
+const Config = require("./services/config/main");
+const RSS = require("./services/rss/main");
+const DiscordWebhook = require("./services/discordWebhook/main");
+const Web = require("./services/web/main");
+const DBNA = require("./services/dbna/main");
+const Telegram = require("./services/telegram/main");
+const Twitter = require("./services/twitter/main");
+const Filter = require("./services/filter/main");
 
 // execute functions
 Config.initConfig();

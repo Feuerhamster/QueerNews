@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import Axios from 'axios';
-import Router from '../router/index';
+import Vue from "vue";
+import Vuex from "vuex";
+import Axios from "axios";
+import Router from "../router/index";
 
 Vue.use(Vuex);
 
@@ -39,49 +39,49 @@ export default new Vuex.Store({
 
 		async fetchConfig(context){
 
-			context.commit('SET_LOADING_STATUS', true);
+			context.commit("SET_LOADING_STATUS", true);
 
 			try{
 
-				let result = await Axios.get('/config.json', { headers: { 'qs-from': 'queernews' } });
-				context.commit('SET_CONFIG', result.data);
+				let result = await Axios.get("/config.json", { headers: { "qs-from": "queernews" } });
+				context.commit("SET_CONFIG", result.data);
 
 			}catch (e) {
-				await Router.push({name: 'error', params: {err: 'connection'}});
+				await Router.push({name: "error", params: {err: "connection"}});
 			}finally {
-				context.commit('SET_LOADING_STATUS', false);
+				context.commit("SET_LOADING_STATUS", false);
 			}
 
 		},
 
 		async fetchOverview(context){
 
-			context.commit('SET_LOADING_STATUS', true);
+			context.commit("SET_LOADING_STATUS", true);
 
 			try{
 
-				return await Axios.get(context.state.config.endpoint + 'overview', { headers: { 'qs-from': 'queernews' } });
+				return await Axios.get(context.state.config.endpoint + "overview", { headers: { "qs-from": "queernews" } });
 
 			}catch (e) {
-				await Router.push({name: 'error', params: {err: 'connection'}});
+				await Router.push({name: "error", params: {err: "connection"}});
 			}finally {
-				context.commit('SET_LOADING_STATUS', false);
+				context.commit("SET_LOADING_STATUS", false);
 			}
 
 		},
 
 		async fetchFeedList(context){
 
-			context.commit('SET_LOADING_STATUS', true);
+			context.commit("SET_LOADING_STATUS", true);
 
 			try{
 
-				return await Axios.get(context.state.config.endpoint + 'feeds', { headers: { 'qs-from': 'queernews' } });
+				return await Axios.get(context.state.config.endpoint + "feeds", { headers: { "qs-from": "queernews" } });
 
 			}catch (e) {
-				await Router.push({name: 'error', params: {err: 'connection'}});
+				await Router.push({name: "error", params: {err: "connection"}});
 			}finally {
-				context.commit('SET_LOADING_STATUS', false);
+				context.commit("SET_LOADING_STATUS", false);
 			}
 
 		},
@@ -90,10 +90,10 @@ export default new Vuex.Store({
 
 			try{
 
-				return await Axios.get(context.state.config.endpoint + 'feeds/' + index, { headers: { 'qs-from': 'queernews' } });
+				return await Axios.get(context.state.config.endpoint + "feeds/" + index, { headers: { "qs-from": "queernews" } });
 
 			}catch (e) {
-				await Router.push({name: 'error', params: {err: 'connection'}});
+				await Router.push({name: "error", params: {err: "connection"}});
 			}
 
 		},
@@ -102,10 +102,10 @@ export default new Vuex.Store({
 
 			try{
 
-				return await Axios.get(context.state.config.endpoint + 'analytics/' + type, { headers: { 'qs-from': 'queernews' } });
+				return await Axios.get(context.state.config.endpoint + "analytics/" + type, { headers: { "qs-from": "queernews" } });
 
 			}catch (e) {
-				await Router.push({name: 'error', params: {err: 'connection'}});
+				await Router.push({name: "error", params: {err: "connection"}});
 			}
 
 		}
@@ -113,4 +113,4 @@ export default new Vuex.Store({
 	},
 	modules: {
 	}
-})
+});

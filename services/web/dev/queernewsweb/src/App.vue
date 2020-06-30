@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
+import Navbar from "@/components/Navbar.vue";
 import Loading from "@/components/Loading";
 
 export default {
-	name: 'App',
+	name: "App",
     components: {
 		Navbar,
         Loading
@@ -23,7 +23,7 @@ export default {
 
 <style>
 #app {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -31,7 +31,7 @@ export default {
     width: 100%;
 }
 body{
-    margin: 0px;
+    margin: 0;
     display: flex;
     flex-direction: column;
     width: 100%;

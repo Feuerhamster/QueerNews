@@ -1,9 +1,9 @@
 // import modules
-const Config = require('../config/main');
-const express = require('express');
-const fs = require('fs');
-const ws = require('express-ws');
-const RSS = require('../rss/main');
+const Config = require("../config/main");
+const express = require("express");
+const fs = require("fs");
+const ws = require("express-ws");
+const RSS = require("../rss/main");
 
 // create static class
 class Web{
@@ -11,8 +11,8 @@ class Web{
 	static app = express();
 	static ws = ws(Web.app);
 	static port = process.env.PORT || Config.config.web.port;
-	static apiRoute = require('./api');
-	static cors = require('cors');
+	static apiRoute = require("./api");
+	static cors = require("cors");
 
 	/**
 	 * Load routes for express app
@@ -20,9 +20,9 @@ class Web{
 	static loadRoutes(){
 
 		Web.app.use(Web.cors());
-		Web.app.use('/api', Web.apiRoute);
-		Web.app.use(express.static('./services/web/app'));
-		Web.app.use('*', express.static('./services/web/app'));
+		Web.app.use("/api", Web.apiRoute);
+		Web.app.use(express.static("./services/web/app"));
+		Web.app.use("*", express.static("./services/web/app"));
 
 	}
 
@@ -37,7 +37,7 @@ class Web{
 			console.log("[Web] Server started on port: " + Web.port)
 		});
 
-		RSS.publishListener('*', async (item, feed) => Web.sendWebsocket(item, feed));
+		RSS.publishListener("*", async (item, feed) => Web.sendWebsocket(item, feed));
 
 	}
 
@@ -53,7 +53,7 @@ class Web{
 		Web.ws.getWss().clients.forEach((client) => {
 
 			client.send(JSON.stringify({
-				type: 'newItem',
+				type: "newItem",
 				item: item,
 				feed: feed.feed
 			}));
@@ -68,9 +68,9 @@ class Web{
 	static initWebConfig(){
 
 		// create config with default schema if not exists
-		if(!fs.existsSync('./services/web/app/config.json') || fs.readFileSync('./services/web/app/config.json').toString() === ''){
+		if(!fs.existsSync("./services/web/app/config.json") || fs.readFileSync("./services/web/app/config.json").toString() === ""){
 
-			fs.writeFileSync('./services/web/app/config.json', JSON.stringify(Config.config.web.frontendConfig, null, 4));
+			fs.writeFileSync("./services/web/app/config.json", JSON.stringify(Config.config.web.frontendConfig, null, 4));
 
 		}
 

@@ -9,8 +9,8 @@
         data(){
 			return {
 				errors: {
-					connection: 'Es ist ein Verbindungsproblem aufgetreten',
-                    notfound: 'Diese Seite konnte nicht gefunden werden'
+					connection: "Es ist ein Verbindungsproblem aufgetreten",
+                    notfound: "Diese Seite konnte nicht gefunden werden"
                 }
             }
         },
@@ -19,7 +19,7 @@
                 if(this.errors[this.err]){
                     return this.errors[this.err];
                 }else{
-                	return 'Ein unbekanntes Problem ist aufgetreten'
+                	return "Ein unbekanntes Problem ist aufgetreten"
                 }
 			}
         }

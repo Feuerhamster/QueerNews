@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import * as Timeago from 'timeago.js';
-import DE from 'timeago.js/lib/lang/de';
-Timeago.register('de', DE);
+import * as Timeago from "timeago.js";
+import DE from "timeago.js/lib/lang/de";
+Timeago.register("de", DE);
 
 export default {
     name: "ItemBox",
@@ -23,7 +23,7 @@ export default {
     	formattedDescription: function(){
     		if(this.description){
 
-				let description = this.description.substr(0, 100) + '...';
+				let description = this.description.substr(0, 100) + "...";
 
 				var temporalDivElement = document.createElement("div");
 				temporalDivElement.innerHTML = description;
@@ -37,15 +37,15 @@ export default {
         },
         date: function(){
             if(this.pubDate){
-                return Timeago.format(new Date(this.pubDate), 'de');
+                return Timeago.format(new Date(this.pubDate), "de");
             }else{
-            	return '';
+            	return "";
             }
         }
     },
     methods: {
     	open: function(){
-    		window.open(this.link, '_blank');
+    		window.open(this.link, "_blank");
         }
     }
 }

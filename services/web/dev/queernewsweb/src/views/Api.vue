@@ -122,7 +122,7 @@ Array[feed][
             Beispiel: <a :href="wsUrl">{{ wsUrl }}</a>
         </p>
 
-        <P>
+        <p>
             <strong>Senden:</strong><br/>
             Da keine funktionalität gefordert ist, bei dem der Client eine Nachricht an den Server schickt, wird bei eingehenden Nachrichten die Verbindung aus Sicherheitsgründen getrennt.
         </p>
@@ -135,7 +135,7 @@ Array[feed][
             Der Typ <code>newItem</code> der bei neuen Artikeln gesendet wird.<br/>
         </p>
 
-        <P>
+        <p>
             <strong>Schema:</strong><br/>
             Bei einer Verbindung:<br/>
 <pre>
@@ -197,7 +197,7 @@ export default {
     computed: {
     	wsUrl: function(){
     		if(this.$store.state.config.endpoint){
-				return this.$store.state.config.endpoint.replace(/http|https/, x => x === 'https' ? 'wss' : 'ws')
+				return this.$store.state.config.endpoint.replace(/http|https/, x => x === "https" ? "wss" : "ws")
             }else{
     			return "";
             }
@@ -228,7 +228,7 @@ export default {
     font-weight: 500;
     font-family: Consolas, monospace;
     align-items: center;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 .api-heading > .green{
     color: #10AC84;

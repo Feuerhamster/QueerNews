@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import Sidebar from '../components/Sidebar'
-import FeedCollection from '../components/FeedCollection'
-import FeedItem from '../components/FeedItem'
+import Sidebar from "../components/Sidebar"
+import FeedCollection from "../components/FeedCollection"
+import FeedItem from "../components/FeedItem"
 
 export default {
     name: "Feeds",
@@ -51,12 +51,12 @@ export default {
 
 	},
 	watch: {
-		'$store.state.config.endpoint': 'fetchFeedList',
+		"$store.state.config.endpoint": "fetchFeedList",
 	},
 	methods: {
 		fetchFeedList: function(){
 
-			this.$store.dispatch('fetchFeedList').then(data => {
+			this.$store.dispatch("fetchFeedList").then(data => {
 				this.feeds = data.data;
 
 				if(!this.$route.params.id){
@@ -71,12 +71,12 @@ export default {
 		},
         selectFeed: function(item){
 			if(this.$route.params.id !== item){
-				this.$router.replace({ name: 'Feed', params: { id: item } });
+				this.$router.replace({ name: "Feed", params: { id: item } });
 				this.fetchFeed(item);
             }
         },
         fetchFeed: function(id){
-			this.$store.dispatch('fetchFeed', id).then(data => { this.currentFeed = data.data; });
+			this.$store.dispatch("fetchFeed", id).then(data => { this.currentFeed = data.data; });
         }
 	}
 

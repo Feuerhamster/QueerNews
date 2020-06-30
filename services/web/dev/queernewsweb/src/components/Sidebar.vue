@@ -3,7 +3,7 @@
     <div class="sidebar">
         <h1>{{ title }}</h1>
         <select @change="clicked(parseInt($event.target.value))">
-            <option v-for="(item, index) in items" :value="index">{{ item.split('-')[0] }}</option>
+            <option v-for="(item, index) in items" :value="index">{{ item.split("-")[0] }}</option>
         </select>
         <ul>
             <li v-for="(item, index) in items" :class="{ active: selectedItem === index }" @click="clicked(index)">{{ item.split(/-|–/)[0] }}</li>
@@ -26,7 +26,7 @@ export default {
         }
     },
     watch: {
-    	'selected': 'select'
+    	"selected": "select"
 	},
     mounted() {
     	if(this.selected){
@@ -37,7 +37,7 @@ export default {
     	clicked: function(item){
 
 			this.selectedItem = item;
-    		this.$emit('select', item);
+    		this.$emit("select", item);
         },
         select: function(){
 

@@ -30,7 +30,7 @@ import ItemBox from "../components/ItemBox";
 import Social from "../components/Social";
 
 export default {
-    name: 'Home',
+    name: "Home",
     components: {
 		ItemCollection,
 		ItemBox,
@@ -47,12 +47,12 @@ export default {
         }
 	},
 	watch: {
-    	'$store.state.config.endpoint': 'fetchOverview'
+    	"$store.state.config.endpoint": "fetchOverview"
     },
     methods: {
     	fetchOverview: function(){
 
-			this.$store.dispatch('fetchOverview').then(data => { this.overview = data.data; });
+			this.$store.dispatch("fetchOverview").then(data => { this.overview = data.data; });
 
 		}
     }

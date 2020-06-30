@@ -1,6 +1,6 @@
 // import modules
-const BetterRSS = require('better-rss');
-const Config = require('../config/main');
+const BetterRSS = require("better-rss");
+const Config = require("../config/main");
 
 // create static class
 class RSS{
@@ -23,25 +23,25 @@ class RSS{
 		RSS.RSS = new BetterRSS(adaptedConfig);
 
 		// Listen on error event
-		RSS.RSS.on('error', (err)=>{
+		RSS.RSS.on("error", (err)=>{
 			if(err.code){
-				console.error('[RSS] ' + err.code + ' (' + err.address + ')');
+				console.error("[RSS] " + err.code + " (" + err.address + ")");
 			}else{
-				console.error('[RSS]', err);
+				console.error("[RSS]", err);
 			}
 		});
 
 		// Log new item
-		RSS.RSS.on('newItem', (item, feed) => {
+		RSS.RSS.on("newItem", (item, feed) => {
 			console.log(`[RSS] new item "${item.title}" from ${feed.feed.title}`);
 		});
 
-		console.log('[RSS] Loaded');
+		console.log("[RSS] Loaded");
 
 		if(RSS.RSS._updater){
 			console.log(`[RSS] Updater running. Interval: ${RSS.RSS.updateInterval / 1000} seconds`);
 		}else{
-			console.warn('[RSS] Warning: Updater not running!');
+			console.warn("[RSS] Warning: Updater not running!");
 		}
 
 
@@ -55,7 +55,7 @@ class RSS{
 
 		let feeds = Object.values(RSS.RSS.feeds().getAll());
 
-		feeds = feeds.filter((f) => RSS.checkFeedScopes(f.feed._source, 'web'));
+		feeds = feeds.filter((f) => RSS.checkFeedScopes(f.feed._source, "web"));
 
 		let items = [];
 
@@ -70,7 +70,7 @@ class RSS{
 					pubDate: {_text: item.pubDate },
 					guid: {_text: item.guid },
 					source: {_text: feed.feed.link },
-					'media:thumbnail' : {
+					"media:thumbnail" : {
 						_attributes: {
 							url: item.thumbnail
 						}
@@ -86,7 +86,7 @@ class RSS{
 				_attributes: { version: "1.0", encoding: "utf-8"}
 			},
 			rss: {
-				_attributes: {version: "2.0", 'xmlns:media': "http://search.yahoo.com/mrss/"},
+				_attributes: {version: "2.0", "xmlns:media": "http://search.yahoo.com/mrss/"},
 				channel: {
 					title: {_text: "QueerNews"},
 					description: {_text: "Aktuelles über LGBT+ Themen"},
@@ -114,7 +114,7 @@ class RSS{
 
 		let feedConfig = Config.config.rss.feeds.find((f) => f.url === source);
 
-		return feedConfig.active && (feedConfig.scopes.includes(scope) || scope === '*');
+		return feedConfig.active && (feedConfig.scopes.includes(scope) || scope === "*");
 
 	}
 
@@ -125,7 +125,7 @@ class RSS{
 	 */
 	static publishListener(scope, func){
 
-		RSS.RSS.on('newItem', (item, feed) => {
+		RSS.RSS.on("newItem", (item, feed) => {
 
 			if(RSS.checkFeedScopes(feed.feed._source, scope)){
 				func(item, feed);

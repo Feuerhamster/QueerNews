@@ -1,7 +1,7 @@
 // import modules
-const RSS = require('../rss/main');
-const Config = require('../config/main');
-const axios = require('axios');
+const RSS = require("../rss/main");
+const Config = require("../config/main");
+const axios = require("axios");
 
 // create static class
 class DiscordWebhook{
@@ -11,9 +11,9 @@ class DiscordWebhook{
 	 */
 	static init(){
 
-		RSS.publishListener('discord', (item, feed) => DiscordWebhook.sendWebhooks(item, feed));
+		RSS.publishListener("discord", (item, feed) => DiscordWebhook.sendWebhooks(item, feed));
 
-		console.log('[Discord] Loaded');
+		console.log("[Discord] Loaded");
 
 	}
 
@@ -32,14 +32,14 @@ class DiscordWebhook{
 
 			axios({
 				url: hook.url,
-				method: 'post',
+				method: "post",
 				headers: {
-					'content-type': 'application/json'
+					"content-type": "application/json"
 				},
-				data: JSON.stringify({ content: `${mention} **${item.title}** von **${feed.feed.title.split('-')[0].trim()}**\n${item.link}` })
+				data: JSON.stringify({ content: `${mention} **${item.title}** von **${feed.feed.title.split("-")[0].trim()}**\n${item.link}` })
 			})
 				.then(res => {})
-				.catch(err => console.error('[Discord]', err.response.data ? err.response.data : err));
+				.catch(err => console.error("[Discord]", err.response.data ? err.response.data : err));
 
 		}
 

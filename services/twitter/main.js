@@ -1,7 +1,7 @@
 // import modules
-const RSS = require('../rss/main');
-const Config = require('../config/main');
-const twitterAPI = require('twitter-lite');
+const RSS = require("../rss/main");
+const Config = require("../config/main");
+const twitterAPI = require("twitter-lite");
 
 // create static class
 class Twitter{
@@ -18,9 +18,9 @@ class Twitter{
 			access_token_secret: Config.config.twitter.accessTokenSecret
 		});
 
-		RSS.publishListener('twitter', (item, feed) => Twitter.sendArticle(item, feed));
+		RSS.publishListener("twitter", (item, feed) => Twitter.sendArticle(item, feed));
 
-		console.log('[Twitter] Loaded');
+		console.log("[Twitter] Loaded");
 
 	}
 
@@ -31,20 +31,20 @@ class Twitter{
 	 */
 	static sendArticle(item, feed){
 
-		let titleHashtag = feed.feed.title.split('-')[0].trim()
-											.split(':')[0].trim()
-											.split(' ')[0].trim()
-											.replace('.', '');
+		let titleHashtag = feed.feed.title.split("-")[0].trim()
+											.split(":")[0].trim()
+											.split(" ")[0].trim()
+											.replace(".", "");
 
 		// Format text
-		let text = `${item.title} von ${feed.feed.title.split('-')[0].trim()}\n${item.link}\n#${titleHashtag} #queer #lgbt #news`;
+		let text = `${item.title} von ${feed.feed.title.split("-")[0].trim()}\n${item.link}\n#${titleHashtag} #queer #lgbt #news`;
 
 		// Tweet on twitter
-		Twitter.Client.post('statuses/update', {
+		Twitter.Client.post("statuses/update", {
 			status: text
 		})
 			.then((res) => {})
-			.catch((e) => console.error('[Twitter] Error: ', e.message));
+			.catch((e) => console.error("[Twitter] Error: ", e.message));
 
 	}
 

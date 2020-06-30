@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import * as Timeago from 'timeago.js';
-import DE from 'timeago.js/lib/lang/de';
-Timeago.register('de', DE);
+import * as Timeago from "timeago.js";
+import DE from "timeago.js/lib/lang/de";
+Timeago.register("de", DE);
 
 export default {
     name: "FeedItem",
@@ -21,7 +21,7 @@ export default {
         formattedDescription: function(){
             if(this.description){
 
-                let description = this.description.substr(0, 200) + '...';
+                let description = this.description.substr(0, 200) + "...";
 
                 var temporalDivElement = document.createElement("div");
                 temporalDivElement.innerHTML = description;
@@ -35,15 +35,15 @@ export default {
         },
 		date: function(){
 			if(this.pubDate){
-				return Timeago.format(new Date(this.pubDate), 'de');
+				return Timeago.format(new Date(this.pubDate), "de");
 			}else{
-				return '';
+				return "";
 			}
 		}
     },
     methods: {
         open: function(){
-            window.open(this.link, '_blank');
+            window.open(this.link, "_blank");
         }
     }
 }
@@ -72,7 +72,7 @@ export default {
     min-height: 120px;
     background-position: center;
     background-size: cover;
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 4px 0 0 4px;
     margin-right: 20px;
 }
 .feed-item > div{
@@ -81,7 +81,7 @@ export default {
     align-items: flex-start;
 }
 .feed-item h1{
-    margin: 0px;
+    margin: 0;
     display: flex;
     font-weight: 500;
     font-size: 22px;
@@ -89,9 +89,9 @@ export default {
     word-break: break-word;
 }
 .feed-item p{
-    margin: 0px;
+    margin: 0;
     text-align: left;
-    padding: 0px 10px 10px 10px;
+    padding: 0 10px 10px 10px;
     font-size: 16px;
     word-break: break-word;
 }
@@ -99,7 +99,7 @@ export default {
     color: rgba(0, 0, 0, 0.4);
     display: inline-block;
     margin-top: auto;
-    padding: 0px 10px 10px 10px;
+    padding: 0 10px 10px 10px;
 }
 @media (prefers-color-scheme: dark) {
     .feed-item{

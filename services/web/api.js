@@ -1,17 +1,17 @@
 // import modules
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const RSS = require('../rss/main');
+const RSS = require("../rss/main");
 
-router.get('/', (req, res) => {
-	res.send({ api: 'QueerNews', homepage: 'https://queernews.ml' });
+router.get("/", (req, res) => {
+	res.send({ api: "QueerNews", homepage: "https://queernews.ml" });
 });
 
-router.get('/feeds', (req, res) => {
+router.get("/feeds", (req, res) => {
 
 	let feeds = Object.values(RSS.RSS.feeds().getAll());
 
-	feeds = feeds.filter((f) => RSS.checkFeedScopes(f.feed._source, 'web'));
+	feeds = feeds.filter((f) => RSS.checkFeedScopes(f.feed._source, "web"));
 
 	let titles = Array.from(feeds, el => el.feed.title);
 
@@ -19,19 +19,19 @@ router.get('/feeds', (req, res) => {
 
 });
 
-router.get('/feeds/:id', [], (req, res) => {
+router.get("/feeds/:id", [], (req, res) => {
 
 	let feed = RSS.RSS.feeds().get(parseInt(req.params.id));
 
-	if(feed && RSS.checkFeedScopes(feed.feed._source, 'web')){
+	if(feed && RSS.checkFeedScopes(feed.feed._source, "web")){
 		res.send(feed);
 	}else{
-		res.status(404).send({ error: 'feed_not_found' });
+		res.status(404).send({ error: "feed_not_found" });
 	}
 
 });
 
-router.get('/overview', (req, res) => {
+router.get("/overview", (req, res) => {
 
 	let feeds = Object.values(RSS.RSS.feeds().getAll());
 
@@ -42,7 +42,7 @@ router.get('/overview', (req, res) => {
 	feeds.forEach((feed) => {
 
 		// Check if feed should displayed or not
-		if(!RSS.checkFeedScopes(feed.feed._source, 'web')) return;
+		if(!RSS.checkFeedScopes(feed.feed._source, "web")) return;
 
 		newFeeds.push({
 			_id: counter,
@@ -67,27 +67,27 @@ router.get('/overview', (req, res) => {
 
 });
 
-router.get('/rss', (req, res) => {
+router.get("/rss", (req, res) => {
 
 	let rss = RSS.generateRSS();
 
-	res.header('content-type', 'application/xml');
+	res.header("content-type", "application/xml");
 	res.send(rss);
 
 });
 
-router.ws('/', (ws, req) => {
+router.ws("/", (ws, req) => {
 
-	ws.send(JSON.stringify({ type: 'connect', status: 'success', service: 'QueerNews WebSocket API' }));
+	ws.send(JSON.stringify({ type: "connect", status: "success", service: "QueerNews WebSocket API" }));
 
-	ws.on('message', (msg) => {
-		ws.send(JSON.stringify({ type: 'error', error: 'send_not_allowed' }));
+	ws.on("message", (msg) => {
+		ws.send(JSON.stringify({ type: "error", error: "send_not_allowed" }));
 		ws.close();
 	});
 
 });
 
-router.get('/*', (req, res) => {
+router.get("/*", (req, res) => {
 	res.status(404).end();
 });
 

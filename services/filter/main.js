@@ -1,12 +1,12 @@
 // import modules
-const RSS = require('../rss/main');
-const Config = require('../config/main');
-const textClass = require('textclass');
-const fs = require('fs');
+const RSS = require("../rss/main");
+const Config = require("../config/main");
+const textClass = require("textclass");
+const fs = require("fs");
 
 class Filter{
 
-	static modelPath = './data/model.json';
+	static modelPath = "./data/model.json";
 
 	/**
 	 * Initialize TextClassWeighted and RSS filter function
@@ -19,7 +19,7 @@ class Filter{
 
 		RSS.RSS.filter((item, feed) => Filter.filter(item));
 
-		console.log('[Filter] loaded');
+		console.log("[Filter] loaded");
 
 	}
 
@@ -33,7 +33,7 @@ class Filter{
 		// Filter for global exclude categories
 		if(Config.config.filter.doExcludeCategoriesFilter){
 
-			let exclude = Config.config.filter.globalExcludeCategories.join('|');
+			let exclude = Config.config.filter.globalExcludeCategories.join("|");
 
 			if(item.categories.find((el) => el.match(exclude))){
 				return false;

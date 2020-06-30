@@ -17,12 +17,12 @@ export default {
     data(){
     	return {
     		hidden: false,
-            icon: ''
+            icon: ""
         }
     },
     methods: {
     	open: function () {
-            this.$router.push('/feeds/' + this.id)
+            this.$router.push("/feeds/" + this.id)
 		}
     }
 }
@@ -39,7 +39,7 @@ export default {
     align-items: flex-start;
 }
 .item-collection > h1{
-    margin: 0px;
+    margin: 0;
     display: flex;
     cursor: pointer;
 }
@@ -47,7 +47,7 @@ export default {
     text-decoration: underline;
 }
 .item-collection > p{
-    margin: 0px 0px 10px 0px;
+    margin: 0 0 10px 0;
     display: flex;
 }
 .item-collection-body{

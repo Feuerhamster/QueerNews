@@ -73,11 +73,11 @@ export default {
 }
 #navbar > .brand >  h1{
     display: flex;
-    margin: 0px;
+    margin: 0;
     color: white;
     font-weight: 400;
     align-items: center;
-    padding: 0px 10px 0px 10px;
+    padding: 0 10px 0 10px;
     text-shadow: 1px 1px rgba(0,0,0,0.2);
     user-select: none;
     font-size: 32px;
@@ -86,7 +86,7 @@ export default {
     color: white;
     text-decoration: none;
     font-size: 21px;
-    margin: 0px 10px 0px 10px;
+    margin: 0 10px 0 10px;
     text-shadow: 1px 1px rgba(0,0,0,0.2);
     cursor: pointer;
 }
@@ -119,7 +119,7 @@ export default {
         width: 100%;
         background: rgb(238,82,83);
         background: linear-gradient(90deg, rgba(238,82,83,1) 0%, rgba(255,159,67,1) 34%, rgba(16,172,132,1) 67%, rgba(46,134,222,1) 100%);
-        padding: 0px 0px 0px 20px;
+        padding: 0 0 0 20px;
     }
     .nav-buttons > a{
         padding: 5px;

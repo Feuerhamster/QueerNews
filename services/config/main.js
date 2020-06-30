@@ -1,16 +1,16 @@
 // import modules
-const fs = require('fs');
+const fs = require("fs");
 
 // create static class
 class Config{
 
-	static configPath = './data/config.json';
+	static configPath = "./data/config.json";
 	static config = {
 		dbna: {
 			enable: false,
-			username: '',
-			password: '',
-			group: '',
+			username: "",
+			password: "",
+			group: "",
 			excludeCategories: [],
 			analytics: {
 				analyzePosts: true,
@@ -23,15 +23,15 @@ class Config{
 		},
 		telegram: {
 			enable: false,
-			token: '',
-			chatId: ''
+			token: "",
+			chatId: ""
 		},
 		twitter: {
 			enable: false,
-			consumerKey: '',
-			consumerSecret: '',
-			accessTokenKey: '',
-			accessTokenSecret: ''
+			consumerKey: "",
+			consumerSecret: "",
+			accessTokenKey: "",
+			accessTokenSecret: ""
 		},
 		filter: {
 			enable: false,
@@ -54,12 +54,12 @@ class Config{
 			enable: false,
 			port: 3000,
 			frontendConfig: {
-				endpoint: 'http://localhost:3000/api/',
+				endpoint: "http://localhost:3000/api/",
 				social: {
-					telegram: 'https://t.me/QueerNewsChannel',
-					dbna: 'https://www.dbna.com/profile/glPhJ_qAvn',
-					discord: 'https://discordapp.com/invite/9xCV2Km',
-					twitter: 'https://twitter.com/QueerNewsDE'
+					telegram: "https://t.me/QueerNewsChannel",
+					dbna: "https://www.dbna.com/profile/glPhJ_qAvn",
+					discord: "https://discordapp.com/invite/9xCV2Km",
+					twitter: "https://twitter.com/QueerNewsDE"
 				}
 			}
 		}
@@ -71,17 +71,17 @@ class Config{
 	static initConfig(){
 
 		// Create data directory if not exist
-		if(!fs.existsSync('./data/')){
-			fs.mkdirSync('./data/');
+		if(!fs.existsSync("./data/")){
+			fs.mkdirSync("./data/");
 		}
 
 		// create config with default schema if not exists
-		if(!fs.existsSync(Config.configPath) || fs.readFileSync(Config.configPath).toString() === ''){
+		if(!fs.existsSync(Config.configPath) || fs.readFileSync(Config.configPath).toString() === ""){
 
 			fs.writeFileSync(Config.configPath, JSON.stringify(Config.config, null, 4));
 
-			console.warn('--- [ Config ] ---\n' +
-				'No config file found. A new one has been created. Please fill in data and restart the application!');
+			console.warn("--- [ Config ] ---\n" +
+				"No config file found. A new one has been created. Please fill in data and restart the application!");
 
 			process.exit();
 
@@ -91,7 +91,7 @@ class Config{
 		let config = fs.readFileSync(Config.configPath).toString();
 		Config.config = JSON.parse(config);
 
-		console.log('[Config] Loaded');
+		console.log("[Config] Loaded");
 
 	}
 }
