@@ -40,8 +40,8 @@ class Telegram{
 				parse_mode: "HTML"
 			})
 		})
-			.then(res => {})
-			.catch(err => console.error("[Telegram]", err.response.data ? err.response.data : err));
+			.then((res) => {})
+			.catch((err) => console.error("[Telegram]", err.response.data ? err.response.data : err));
 
 	}
 

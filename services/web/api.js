@@ -2,6 +2,8 @@
 const express = require("express");
 const router = express.Router();
 const RSS = require("../rss/main");
+const DBNA = require("../dbna/main");
+const Config = require("../config/main");
 
 router.get("/", (req, res) => {
 	res.send({ api: "QueerNews", homepage: "https://queernews.ml" });
@@ -73,6 +75,20 @@ router.get("/rss", (req, res) => {
 
 	res.header("content-type", "application/xml");
 	res.send(rss);
+
+});
+
+router.patch("/dbna-analyze-last-posts-manually", (req, res) => {
+
+	if(req.query.password && req.query.password === Config.config.dbna.password){
+
+		DBNA.analyzeLastPosts();
+
+		res.status(200).end();
+
+	}else{
+		res.send(401);
+	}
 
 });
 

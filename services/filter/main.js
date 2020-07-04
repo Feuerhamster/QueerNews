@@ -46,7 +46,7 @@ class Filter{
 			let res = Filter.TCW.run(item.title);
 
 			if(res && res.result.confidence >= Config.config.filter.textFilter.filterGap){
-				return false
+				return false;
 			}
 
 		}

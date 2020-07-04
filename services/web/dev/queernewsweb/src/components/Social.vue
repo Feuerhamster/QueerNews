@@ -28,7 +28,7 @@ export default {
 
 <style scoped>
 .social-links{
-    margin: 20px 0px 20px 0px;
+    margin: 20px 0 20px 0;
 }
 .social-links > a > img{
     height: 40px;

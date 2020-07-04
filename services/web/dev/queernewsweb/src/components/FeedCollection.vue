@@ -33,7 +33,7 @@ export default {
     flex-wrap: wrap;
 }
 .feed-collection > h1{
-    margin: 0px;
+    margin: 0;
     display: flex;
 }
 .feed-collection{
