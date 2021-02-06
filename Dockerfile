@@ -4,7 +4,7 @@ FROM node:lts-alpine
 ENV NODE_ENV production
 
 RUN mkdir -p /app
-COPY ./* /app
+COPY ./* /app/
 
 EXPOSE 3000
 
