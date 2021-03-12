@@ -99,7 +99,7 @@
             <div>
                 <h1>Kontaktiere uns!</h1>
                 <p>
-                    Bei weiteren Fragen und/oder Problemen kannst du uns unter <a href="mailto:contact@queernews.ml">contact@queernews.ml</a>
+                    Bei weiteren Fragen und/oder Problemen kannst du uns unter <a href="mailto:queernews@bluemedia.dev">queernews@bluemedia.dev</a>
                     eine E-Mail schreiben. Du kannst uns auch schreiben, wenn du einen guten Vorschlag zur verbesserung oder für eine neue Quelle hast.</p>
             </div>
 
