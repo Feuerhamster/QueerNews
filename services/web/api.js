@@ -15,7 +15,7 @@ router.get("/feeds", (req, res) => {
 
 	feeds = feeds.filter((f) => RSS.checkFeedScopes(f.feed._source, "web"));
 
-	let titles = Array.from(feeds, el => el.feed.title);
+	let titles = Array.from(feeds, el => el.feed.title ? el.feed.title : new URL(el.feed.link).hostname);
 
 	res.send(titles);
 
