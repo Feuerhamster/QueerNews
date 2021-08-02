@@ -48,7 +48,7 @@ router.get("/overview", (req, res) => {
 
 		newFeeds.push({
 			_id: counter,
-			title: feed.feed.title,
+			title: feed.feed.title ? feed.feed.title : new URL(feed.feed.link).hostname,
 			description: feed.feed.description,
 			link: feed.feed.link,
 			items: feed.items.slice(0, 5)
